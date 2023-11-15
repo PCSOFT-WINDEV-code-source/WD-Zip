@@ -1,0 +1,503 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : FEN_ATTENTE_TRAITEMENT
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : FEN_ATTENTE_TRAITEMENT
+ identifier : 0x263c8c0704f3accd
+ internal_properties : CAAAAAgAAABpEA8s+FB5yO0S7njRzrSOs4Xh8v0Vz2cHg7vO0ctol/VJrmIfp0Y7gfy5yIVxHw649jJdz1n5eENJhrvd52KFHa9Z43DpF0tu+t4YlwRJUhoywEKPqN9KWVcPH3Pp0YNcGlXeMd12W6YVzBfKE2ZxCVKaAgA3VaSAk4NIUB8V3lRzn1s38lEiTEMZtmXBNAmjSTfH5U0nlUEr+mG1YlPqEIN+iimCu11m/0Bdz3xQC+Ho1ZthFuDcAGtNQHFwCcx/o3tTOc+3XNpHXvQ8OSYU77N58ieK3RCwryc/xuAPfgd8ZEbg1uGg64f4+R0bNhX4jFZHAZksRO1qfFeDwgX/+6GRyMqofNMuoTuzOFx55AyCXe9ZXYOWmKn5OxLHNS2vWf8dqj+J1M4AaAmpGDqrNS6AEwYiN+4uRxzDP+4FdvVRd02sRc+PWFpRp5NXSfguo4S0Yv5fTZo6ilUGZNj5L6MeLM2tLwd65gzi44osQpW7GEfY6OP0ZZxA62Z7WULYYLg9UXil7GxhumOZrM4z4LEjxttHVQAKUNcDvjnTDNEKtui9HQTHzWklCg5aBNDDQbtwKUymxo8Cgy/yaPVkpjJBoi+ZPD13yDzxyEAWCwqY9N1pr7YBU+9ZnDMvPn2RbqUZeEGSU/igJ0Q7TChN86LbtV61x7uetNLL2ZW5Z5+y4cf5YXDMQB8p8rlVTTVmrBOQsJlMa5z3j/vA1m+WLSPbEbqnw4HNsRz7goWHCM4k8uuhlpludIW8xSqJ62ULzDe47cdIIYpUq2Y3qYE/yCrRudgl3tN2Z1EStdwezuTp9uDqnhfnXhpJR/LEfg==
+ properties :
+  width : 399
+  height : 220
+  widthClient : 397
+  heightClient : 188
+ controls :
+  -
+    name : IMG_Spinner
+    identifier : 0x263c8c1e050a0648
+    internal_properties : CAAAAAgAAACAfRGGIZLxOPsishL1g1DkbsnmwrS/o7SEKPQo20/LG7bZ/1ai/CsHQMszL8BFH8iE2WTD+FUhNL9tjgr06y4CVyr4yrrpgSYRnRGFmTfyfY6HGhzo83jAM6+hO5iWzVYM+Bl/RIiPtUGwdU+uwGNaQEpIxVIGPzaD5OmwzD2TfKqJPswY+o28inbHLvPTkndjWA1zl13fJaZYUHYFQ1I2sG3jqoiAmGh3J7oFkm1jeN469vsu/i/OwDmQjChIZMSRi5vqyZDO+oJmWXD+MWnTuskVxLvP6AntddkRGnEWP2PUQAN5RZkKM43sRaJEimm19XAQXR/57KSKtP06tRxaiLITg1XBk20OVDZ+HVeMO9ydFU2RvxBUM48MQnGKVOrMvDNTh10ICdE/wdlR10eQvRIWeXQ4CA9EXtZi5VLM716yocbe+kMO4yBUl8FF71lOr65c8twnvIz/qVvAEJJW2+2QRMxd3CVnS9LTRKoyxUMZp/kPY4xTO0eLuDj1sdKPanBEhu0cSMxxMTkq6isa24NarWvYkaKT5BX+0xZy3aI4h4Jg3BqPIV2ifviIAKqWAJtZ20oQAyQKOLN4jUiz2bY8MUo+EBI+JYHTs8VpXldsjH3s18tWQ1L6g7j1ZogHuPzARs55HsR18hm3KWyjeY5DlcMEBbbmmT8OaGmCi1TwTLm/nu6402nbr5KpEIpRiP+Bm1qEeLChnYqw5DmQ4/BqCpAxcYA=
+    properties :
+     x : 123
+     y : 6
+     width : 150
+     height : 150
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : LIB_TraitementEnCours
+    identifier : 0x263ca1a00536095c
+    internal_properties : CAAAAAgAAABPI77wyW5dYbe5n+XgXny1OzVPCuUKoftb8JkVgTDe5C00k+vtDzxljGaH2BZgOmsGSgK6IRgK+k/e0l0Cu1vrgM/smOvkLmUb9H7D0lwe6iuYo73m2WNn10ZWnVK7tdF2V3lpdKVf/B+Oh7JJUac/3xhK9pLswqAwWzQx8L/TvU0orUVGsgvyFyTZCV8Kl1UQZxh8osciJyLCs0PKrtvmpQeeoI1tRH5yt91vChwWLbQwIKzFSbfM1lN0g2c65wlrQEubstJrUpl0CCenwN0MGvSZpoB5/2aZRCICzLVsOqp8KEGx4HS+oWvK4LT+VTuptPGMoLoXaYoYdjgcHEd7qqjzmMIYZTikNkLSXSi4KdFPJaiUPtQhSeaNWYSm/XqcfZksgIxz0yaKTiJ6jCuX/znKyhM+GNQBpGsfv2O7MsziX2pe5wBbsG5hQSPQxcLIx/fguc7uUPRmMGbpgU61yrhA7eFI1EmXu8Vv8+YPFM9gAmwiZ/3jiJVSMlI=
+    properties :
+     x : 6
+     y : 164
+     width : 385
+     height : 18
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : JAUGE_Traitement
+    identifier : 0x263ca45b056bb4fd
+    internal_properties : CAAAAAgAAACTkg/yvmpVnXJVwZvmt9QKOHG4xRXGeoDWwyg4VxjdtEfRid6pGjJTyJVN5fHaOPWdc2LKE3FVB9sC/YyhMkAgA+6o39z6tnhGgL/vtbi9Q1H9AcC0PyfPGfj/w39yC5g5CNC9N/4wk4uZdaUbfG1TBvu9zyJuQV6UqDjH3Y5cnHqXuGplv/np4rOjP/w9kT6gTCr47JcUQKFP3OCyoJIqH3dyiJPsXGuEhaYOnWAcBC5gIwzD/WMFVPItnFPzwvrUR4A8FVl0GP8ZJ0FkmvHaHQ6a4mQZjvVnvrbFT/lXlY5aPwZ5VgXxlC2128lTwSVb2yziPz7p4dsikvbMyoQZGxd7suGnGyotsSBXshoi7Fss/gsa4VOJHpAQc2cSOIMXUYW+Qc/0V8RECBzP+QYeTJbf1mv3h4iWbjGy3f31LSai3cHInTRn7gzcRzR8eis9Otn9U6MJ0+IwVEcViCYfIqGhUkhQinSkBXHfCuAzfAKBsJhoKTMQGcycC54yMxD00ZTkT0BWeJ9DEUD/WXp5K9tuo/IJ0FODBS57tO28NvKPtLUI9yZRx4+4wYxKdDxMR/VfkyY66K2npA2dug6Pn7mXadz9IlRhbTiLcTZ3ADhRMzW/ESWLchxk4WpBheRbJBvLHCz8zcAgV9sLJ1QsK4b2gTBSMku6JAD2mclHOjMoN6HXTNIH0O18bhicFMdKBl+VVjm1aqJc0kUYNCCXUernpnBniXSFTvqvKxTdrOUyuV4KSgS6VbXC/+LgBnyW+sHMdnI+MqWsEgWhJ0MZ/pDGSWRlVtpdOXeHzD2omX3GFtH0ksB2O42US4J/5LENxCHISmMUbha0cwkkXAloQp21ir1PNwPh1bv5osg1XPAeh5Jb6iA9BTqxnd3p6C+Taqi70rxdCFFjwX1TopuQO+0beCjlZovsDNSfFu4F9NZ0iA==
+    properties :
+     x : 49
+     y : 79
+     width : 298
+     height : 31
+    type : 10
+    code_elements :
+     type_code : 17
+     p_codes : []
+ menu :
+  name : _Menu
+  identifier : 0x292573e513b5f221
+  internal_properties : CAAAAAgAAADAfZ27Q+jJ/MBXHLGCb7PyE2Yqjvuo9mAX2ZN+LLuyQtzms1431znXR0sNCCeLESXZp1gqmo+m2mUhb2ELR2phZ8VOgUSyXddfQyxpxffipvH/iiFuFkCLgpjx1Ah9/9/ndeRpWb0s9Qcjy8oPtW3aMcRtuglgDe5Ch9/jnC/Drp19/hhf+qz96diLw5T0yWlzg33c/E8hhMwUBdSOV69/8iDQGLfTvLoTvV3YkiQ5Dce7dxB2gUx1AVvVTykQMm7G+0haIOV568KMGgPEJluRN2XjgQ11Tb8vVxt6P2g=
+  options : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAAAjFWXItEk/EPvcbGR+hALkgRfdOpVtIn+yZNxHnmSRFJegE/AnD2HbGAaMfhGCqfzkryHG9FVhjtF+iQYkZ59QBQ88Okhh0vjCoVhOagox2hvIqrJnU30QK15/ZA==
+ actionbar : {}
+ code_elements :
+  internal_properties : CAAAAAgAAACUFJAMQ46DUhuvWJQwo1hIy+n4K0QvDK05i2VgDY2uKzhKC/aZMGTwzEtuaTl0Gt6G9wWZhpfetw6UYdZX7q+1LAkzhrTv/Bjau47gwUR7bdc6NjQwUdD3O3RIW6iqyZpm0uT6jr1NttGvLXwKeU17vP8YDlTNER97DF1F/4u6XiAU+ZLwPzHvUfeHOAaZ8cctmcNzYFCMpEIoLvEfXFmLL5dFH567oUFpD/Yoo2Dn7+DTFY5RXo+udv15I5JqN5yP
+  type_code : 1
+  p_codes :
+   -
+     code : |1-
+      PROCEDURE MaFenêtre(gbSpinner est un booléen) 
+      gsListeFichier est une chaine
+      gnNBFichiersSélectionnés est un entier
+   -
+     code : |1+
+      
+      si gbSpinner = vrai ALORS
+      	IMG_Spinner..visible = vrai
+      	LIB_TraitementEnCours = "Fermeture de l'archive en cours ..."
+      sinon
+      	JAUGE_Traitement..Visible = vrai	
+      		
+      	// Quel traitement ? 	
+      	SELON geTraitement
+      
+      		CAS Extraire_ici
+      			AutoExtraireIci()
+      			LIB_TraitementEnCours = "Extraction en cours..."			
+      			
+      		CAS Extraire_rep
+      			AutoExtraireRep()
+      			LIB_TraitementEnCours = "Extraction en cours..."
+      			
+      		CAS AjouterFile_choisir_archive		
+      			// On filtre les applications
+      			FiltreApplication()
+      			
+      			AutoAjouterFichierArchive()
+      			LIB_TraitementEnCours = "Compression en cours...."
+      		
+      		CAS Compress_wdz
+      			// On filtre les applications
+      			FiltreApplication()
+      			
+      			AutoCompress(zipFormatWDZ)
+      			LIB_TraitementEnCours = "Compression en cours...."
+      			
+      		CAS Compress_zip
+      			// On filtre les applications
+      			FiltreApplication()
+      				
+      			AutoCompress(zipFormatZIP)
+      			LIB_TraitementEnCours = "Compression en cours...."
+      	FIN
+      	
+      	// Archive ouverte ?
+      	si zipExiste(gMonArchive)=vrai ALORS
+      		zipFerme(gMonArchive)		
+      	FIN
+      	
+      	ferme(FEN_ATTENTE_TRAITEMENT)
+      	
+      FIN
+      
+      
+      
+      
+     type : 34
+   -
+     code : |1+
+      
+      
+     type : 234
+   -
+     code : |1+
+      
+      
+     type : 165
+   -
+     code : |1+
+      
+      
+     type : 177
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1+
+      
+      
+     type : 2
+  procedures :
+   -
+     name : AutoExtraireIci
+     procedure_id : 1602356421628085550
+     type_code : 14
+     code : |1+
+      // Résumé : Procédure automatique qui extrait l'archive
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE AutoExtraireIci()
+      
+      tabFichier est un tableau de chaînes
+      sDestination est une chaîne
+      
+      
+      SI ArchiveOuvreArchive(LigneCommande(2))=Vrai ALORS
+      	// On ajoute la liste des fichiers à extraire
+      	POUR TOUT zipfic de gMonArchive.Fichier
+      		TableauAjoute(tabFichier,zipfic.Nom)			
+      	FIN
+      	// On extrait le chemin pour l'extraction depuis la ligne de commande
+      	sDestination =  ""
+      	
+      	// On réalise l'extraction
+      	ArchiveExtractionFichiers(tabFichier,sDestination,zipRépertoire,JAUGE_Traitement)
+      FIN
+     type : 458752
+   -
+     name : AutoExtraireRep
+     procedure_id : 1602356752341234525
+     type_code : 14
+     code : |1+
+      // Résumé : Procédure automatique qui extrait l'archive dans un répertoire 
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE AutoExtraireRep()
+      
+      
+      tabFichier est un tableau de chaînes
+      sDestination est une chaîne
+      
+      
+      SI ArchiveOuvreArchive(LigneCommande(2))=Vrai ALORS
+      	// On ajoute la liste des fichiers à extraire
+      	POUR TOUT zipfic de gMonArchive.Fichier
+      		TableauAjoute(tabFichier,zipfic.Nom)			
+      	FIN
+      	
+      	// On extrait le chemin pour l'extraction depuis la ligne de commande
+      	sDestination = fExtraitChemin(LigneCommande(2),fDisque+fRépertoire+fFichier)
+      	
+      	// On crée le répertoire si besoin
+      	fRepCrée(sDestination)
+      	
+      	sDestination = sDestination + [fsep]
+      	
+      	// On réalise l'extraction
+      	ArchiveExtractionFichiers(tabFichier,sDestination,zipRépertoire,JAUGE_Traitement)
+      	
+      FIN
+      
+     type : 458752
+   -
+     name : AutoAjouterFichierArchive
+     internal_properties : CAAAAAgAAABIo1QyiGSPgVZGm6WKekv+w/CEfPJvWQ6UbuAFZcBS31LHYQypNuRFnCQ2BfaEYcqunnZ7rjTxA16q0bZcGjz91eYQ9BDMyz70jP7VfYqBKk+sHJquUzhH1fo1xeANddDMCyzQFdZ6JXlEkvkA5CWMme97foSZXAP8sVD6Ge2zYkqURr7L+hkE6I1fvZDwqchmcoV4qyA=
+     procedure_id : 1602356812470921616
+     type_code : 14
+     code : |1-
+      // Résumé : Ouvre une archive et ajoute les fichiers demandé dedans
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE AutoAjouterFichierArchive()
+      
+      sNomArchive	est une chaine
+      tabFichier est un tableau de chaînes
+      sCheminMemorise est une chaine
+      sRepertoire est une chaine
+      
+      sNomArchive = fSélecteur("C:", "", <§$0001§>,<§$0002§>+TAB+"*.wdz;*.zip;*.rar;*.tar.gz;*.tar;*.7z"+RC+<§$0003§>+TAB+"*.exe"+RC+<§$0004§>+TAB+"*.*", "wdz", fSelOuvre+fSelExiste)
+      sRepertoire = fExtraitChemin(sNomArchive,fDisque+fRépertoire)
+      
+      // On vérifie la saisie
+      SI sNomArchive<>"" ALORS
+      	// Ouvrir l'archive et afficher son contenu
+      	ArchiveOuvreArchive(sNomArchive)	
+      	
+      	// Pour chaque fichier
+      	POUR TOUT CHAÎNE sMonfichier de gsListeFichier SEPAREE PAR RC
+      		SI fRepExiste(sMonfichier) =Vrai ALORS
+      			// Un dossier doit être ajouté dans l'archive	
+      			UnFichier, ResListeFichier sont des chaînes
+      			
+      			// On liste les fichiers
+      			ResListeFichier =fListeFichier(sMonfichier+[fSep]+"*.*",frRécursif)
+      			
+      			// Pour chaque fichier trouvé
+      			POUR TOUTE CHAÎNE UnFichier DE ResListeFichier SEPAREE PAR RC
+      				// On reprend le chemin mémorisé
+      				si contient(UnFichier,sRepertoire) = vrai ALORS
+      					sCheminMemorise = Droite(UnFichier,(Taille(UnFichier)-Taille(sRepertoire)))
+      				sinon
+      					sCheminMemorise = fExtraitChemin(UnFichier,fRépertoire)
+      				FIN
+      				
+      				
+      				UnFichier = UnFichier + TAB + sCheminMemorise
+      				TableauAjoute(tabFichier, UnFichier)
+      			FIN
+      		SINON
+      			TableauAjoute(tabFichier,sMonfichier)
+      		FIN
+      	FIN
+      	
+      	ArchiveAjouteListeFichier(tabFichier,zipAucun,JAUGE_Traitement)
+      	
+      FIN
+     type : 458752
+   -
+     name : AutoCompress
+     internal_properties : CAAAAAgAAAAPHNhAzcZ9vTPgiirAFP5y2TgD8VQieosThdSz37bR7Qhwr/rBC2t997haM57l/VvU2WqRo7zo6TAUDS69KFHE48htiQGc4l8BsvvcSqgOoUO4VFZWKx33RHvpLEnjR3Kc350U+Cjg7/BxopRFMokUsQNS5t0X6ONpzEj7ZANZgGc+jRPRPEbYc/NBaMyvtTJ+WgY+WOjC7DxplAWieFDOQgOenm5weVHHrb2SPqAWNHE14tU=
+     procedure_id : 1602356855420735289
+     type_code : 14
+     code : |1+
+      // Résumé : Compresse le dossier en un fichier du type compression passé en paramètre
+      // Paramètres :
+      //	nTypeCompression (entier) : Type de compression à effecuter
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE AutoCompress(nTypeCompression est un entier)
+      tabFichier est un tableau de chaînes
+      sArchive est une chaine = LigneCommande(2)
+      sRepertoire est une chaine = gauche(LigneCommande(2),(taille(LigneCommande(2)) -taille(ExtraitChaîne(LigneCommande(2),rangDernier,fsep,DepuisFin))))
+      sCheminMemorise est une chaine
+      
+      // On choisit la compression
+      selon nTypeCompression
+      	cas zipFormatWDZ
+      		sArchive = ObtenirNomArchive(sArchive,".wdz")
+      	cas zipFormatZIP
+      		sArchive= ObtenirNomArchive(sArchive,".zip")
+      		
+      	AUTRE CAS
+      		retour	
+      FIN
+      
+      // On arrive à créer l'archive ?
+      si ArchiveCréeArchive(sArchive)=vrai ALORS
+      
+      	// Pour chaque fichier
+      	pour tout chaine sMonfichier de gsListeFichier SEPAREE PAR RC
+      		SI fRepExiste(sMonfichier) =Vrai ALORS
+      			// Un dossier doit être ajouté dans l'archive	
+      			UnFichier, ResListeFichier sont des chaînes
+      			
+      			// On liste les fichiers
+      			ResListeFichier =fListeFichier(sMonfichier+[fSep]+"*.*",frRécursif)
+      			
+      			// Pour chaque fichier trouvé
+      			POUR TOUTE CHAÎNE UnFichier DE ResListeFichier SEPAREE PAR RC
+      				// On reprend le chemin mémorisé
+      				sCheminMemorise = droite(UnFichier,(taille(UnFichier)-taille(sRepertoire)))
+      				
+      				UnFichier = UnFichier + TAB + sCheminMemorise
+      				TableauAjoute(tabFichier, UnFichier)
+      			FIN
+      		SINON
+      			TableauAjoute(tabFichier,sMonfichier)
+      		FIN
+      	FIN
+      
+      	ArchiveAjouteListeFichier(tabFichier,zipAucun,JAUGE_Traitement)
+      FIN
+     type : 458752
+   -
+     name : RécupèreListeFichierSelectionné
+     internal_properties : CAAAAAgAAAAOP6HYr/TA8SooTURjaY+YsNsm91KJZSgN7fRg/PlIXQL5meOTHUVQ1YTlhRyQjpe4CSVSWspGOaRCvysuSYQPcgBkMVfNeHdg40G+mgkCh6yx7Lcws4zdL0/04yp56iFESSf2kd6jWr9CKrHV
+     procedure_id : 1614231426357980419
+     type_code : 14
+     code : |1+
+      // Résumé : extrait les fichiers sélectionnés de l'explorateur Windows actif
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE RécupèreListeFichierSelectionné()
+      
+      
+      // On récupère les répertoires ouvert dans le shell
+      MesExplorateurs est un objet automation "shell.application"
+      
+      // On récupère le handle de la fenêtre active (donc l'explorateur courant)
+      nHandleActivWindow est un entier = API("User32.dll","GetForegroundWindow")
+      
+      // On parcourt les explorateurs, si il y en a plusieurs d'ouvert, on ne peut pas savoir lequel est celui de notre application
+      POUR i =0 _a_ ((MesExplorateurs>>Windows>>count)-1)
+      	
+      	// On récupère le handle de l'explorateur que l'on traite
+      	nHandleExplorer est un entier = MesExplorateurs>>Windows>>Item(i)>>HWND
+      	
+      	// On ne fait le traitement que pour la fenêtre "active"
+      	// Si l'explorateur que l'on traite n'est pas la fenêtre active, on continue de parcourir les explorateurs
+      	SI nHandleExplorer<>nHandleActivWindow  ALORS
+      		CONTINUER
+      	FIN
+      	
+      	// Pour l'explorateur actif
+      	POUR j=0 _A_ ((MesExplorateurs>>Windows>>Item(i)>>Document>>SelectedItems>>count)-1)
+      		// Il y a un élément de sélectionné ? 
+      		SI MesExplorateurs>>Windows>>Item(i)>>Document>>SelectedItems>>count = 0 ALORS
+      			SORTIR
+      		FIN
+      		// On récupère les éléments sélectionnés
+      		gsListeFichier += [RC] + MesExplorateurs>>Windows>>Item(i)>>Document>>SelectedItems>>item(j)>>path
+      		gnNBFichiersSélectionnés++
+      	FIN
+      	
+      	// On a traité l'explorateur actif
+      	// On peut donc sortir
+      	SORTIR
+      	
+      FIN
+      
+      
+      
+     type : 458752
+   -
+     name : FiltreApplication
+     internal_properties : CAAAAAgAAADbd6X7c/xCraF+oE93LQdKgrPyboLjjB2UJL99m3q4w6ALZHRMB+Pxo0Qmjy6JbSNIZVKtz3AAFQSQudoFFKFEh/SdVdWoEkvNzl9w+gSueRcMnHqCr5U7yP+Tri8NcTjCnd+uVopKoVYbVD4DtCuqp2HMmIvRmlUv5vJ1ck2TjhV8/32/DgDSKV2b6mI5x2+xwlc9aXggTKgCNpSXf9aG50Nn/qRd30xRB0u4hkdlq1N+toE=
+     procedure_id : 1614237765732300317
+     type_code : 14
+     code : |1-
+      // Résumé : Filtre les applications qui s'exécutent depuis le menu contextuelle, par défaut il y a une application de lancée pour chaque élément sélectionné
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE FiltreApplication()
+      
+      // On filtre les applications
+      // Quand le shell appel WD Zip depuis l'explorateur, il lance un exe / fichier sélectionné
+      // le but est de n'avoir qu'une seul exécutable, on ne laisse qu'un seul exe lancé, les autres font un FinProgramme
+      // Le seul exe lancé se charge de récupérer les fichiers sélectionnés dans l'explorateur
+      SémaphoreCrée("wdzip",1,0,partageUtilisateur)
+      
+      SI SémaphoreDébut("wdzip",1) = Faux ALORS
+      	FinProgramme()
+      FIN
+      
+      // On récupère les fichiers sélectionnés
+      RécupèreListeFichierSelectionné()
+      
+      // On détruit la sémaphore, il faut que d'autre menu contextuelles s'exécute
+      Multitâche(50)
+      SémaphoreDétruit("wdzip")	
+     type : 458752
+   -
+     name : ObtenirNomArchive
+     procedure_id : 1614254924133460776
+     type_code : 14
+     code : |1+
+      // Résumé : Renvoie le nom de l'archive en vérifiant que ce fichier n'existe pas déjà
+      // Paramètres :
+      //	sArchive (chaîne ANSI) : Nom de l'archive a priori
+      //	sExtension (chaîne ANSI) : Extension de l'archive
+      // Valeur de retour :
+      // 	chaîne ANSI : Nom de l'archive valide
+      //
+      PROCEDURE ObtenirNomArchive(sArchive est une chaîne, sExtension est une chaine) : chaine
+      
+      sNomArchiveTemporaire est une chaine
+      // Par défaut on commence le renommage de fichier a 2
+      nCompteurFichier est un entier = 2
+      
+      // Récupère le nom de l'archive à créer selon le nombre de fichier sélectionnés
+      SI gnNBFichiersSélectionnés>1 ALORS
+      	
+      	// On extrait le nom du répertoire précédent pour en faire le nom de l'archive
+      	sArchive = fExtraitChemin(sArchive,fRépertoire+fDisque) 
+      	sArchive  = Gauche(sArchive,Taille(sArchive )-1)
+      	sArchive = sArchive + [fSep] + ExtraitChaîne(sArchive,rangDernier,fSep)
+      	
+      SINON
+      	// On récupère le nom du fichier pour en faire le nom de l'archive
+      	sArchive = fExtraitChemin(sArchive,fFichier+fRépertoire+fDisque)
+      FIN
+      
+      // On vérifie que le fichier que l'on va archiver n'existe pas déjà
+      sNomArchiveTemporaire = sArchive
+      TANTQUE fFichierExiste(sNomArchiveTemporaire+sExtension)=Vrai
+      	sNomArchiveTemporaire = sArchive+"("+nCompteurFichier+")"
+      	nCompteurFichier++	
+      FIN
+      
+      // On renvoie la bonne valeur
+      sArchive = sNomArchiveTemporaire + sExtension
+      
+      renvoyer sArchive
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAAAspXRQsX4kpYpRJzI8SMGEUfXYJhQeqig0H9mPZLI9hoPnkeFEnSQ8t7JVd8VUY9eLyST/2DyAYB+9rK7lbHVOclfSdkhgAQ9dNjlmStKMpPl9
+  original_name : Modele1
+resources :
+ string_res :
+  identifier : 0x163c8bf0010f50c3
+  internal_properties : CAAAAAgAAACyXVFaObH4lOGSEHJoZf1MD49w+XTw2LScZCP/urkWFwy+HYJdyQ3umA==
+  strings :
+   -
+     text :
+      fr-FR : Extraction en cours ...
+     index : 0
+   -
+     text :
+      fr-FR : Sélectionnez une archive...
+     index : 1
+   -
+     text :
+      fr-FR : "Archives (*.wdz; *.zip;*.rar, *.tar; *.tar.gz, *.7z)"
+     index : 2
+   -
+     text :
+      fr-FR : Exécutables (*.exe)
+     index : 3
+   -
+     text :
+      fr-FR : Tous fichiers (*.*)
+     index : 4
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

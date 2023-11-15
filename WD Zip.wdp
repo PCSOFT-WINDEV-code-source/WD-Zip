@@ -1,0 +1,368 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : WD Zip
+ major_version : 28
+ minor_version : 0
+ type : 4097
+ description : Projet WD Zip
+ subtype : 0
+project :
+ identifier : 0x0
+ internal_properties : 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
+ configurations :
+  -
+    name : " WD Zip"
+    internal_properties : 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
+    configuration_id : 15591920318588165447
+    type : 1
+    generation_name : WD Zip.exe
+    version :
+     major_version : 21
+     minor_version : 39
+     generation_version : 213
+     revision_version : 32
+     internal_generation_version : 364
+    icon_filename : .\WDZip.ico
+    language : 1
+    new_features_help :
+     name : Nouveauté_WD_Zip
+     internal_properties : CAAAAAgAAABbr8wVJFzr9m39ZNoxaD8owurZi3PElz5L/do/LZ6Xuh5QyUPA7R8mRk9rCFc5wwuHQXC/U7/Mux7bHB9JrTd5Ca9mqLHkY0z4dDOicmgyZgg8Gs17
+     physical_name :
+      fr-FR : Nouveauté_WD_Zip005.chm
+ elements :
+  identifier : 0x4acc51c80021f621
+  elements :
+   -
+     name : FEN_MODE_AJOUT
+     identifier : 0x3f9fd21c1d51f912
+     internal_properties : CAAAAAgAAABZNQEFop+XmKcmQ1h+k3xNWyqS+kNl/0msswGKbKR2knpaMdUyzttRADqkHOQc5NQ8xA==
+     physical_name : .\FEN_MODE_AJOUT.wdw
+     type : 2
+   -
+     name : FEN_INFO_FICHIER
+     identifier : 0x3f9e79fe11b19040
+     internal_properties : CAAAAAgAAAA4FmC8izB4o6w/TKVrkXtQVhml5XF0SB/y3QK/0Z5+mmZUNdE1w9ZKCTOtC4tFPbMdJQ==
+     physical_name : .\FEN_INFO_FICHIER.wdw
+     type : 2
+   -
+     name : FEN_RECHERCHE
+     identifier : 0x3d9341a433096b6c
+     internal_properties : CAAAAAgAAABZNQEFop+XmKcmQ1h+lXBBm95aQhyuSCv6MQ24n46EZKgUH9cyzttRADqkHOQc5NQ8xA==
+     physical_name : .\FEN_RECHERCHE.wdw
+     type : 2
+   -
+     name : FEN_REPERTOIRE_EXTRACTION_DEFAUT
+     identifier : 0x3fc4e80308c47472
+     internal_properties : CAAAAAgAAADFQS1xzuvD3OtqNyziqkR1dyRCCuw9IA2H7giYuGe3cZulahz+Ok/FtG5oUNAA+OjQUA==
+     physical_name : .\FEN_REPERTOIRE_EXTRACTION_DEFAUT.wdw
+     type : 2
+   -
+     name : FEN_INFO_ARCHIVE
+     identifier : 0x3f9d538c60116c09
+     internal_properties : CAAAAAgAAAC/m5eLOGVNXmn8BZ48JTqPeQhAaFkLKB6sC9M4Qs7EdISc85N0jJ2TRvDq1l6SbmKqqg==
+     physical_name : .\FEN_INFO_ARCHIVE.wdw
+     type : 2
+   -
+     name : TEST_PRINCIPALE
+     identifier : 0x4a0addb7000091b4
+     internal_properties : CAAAAAgAAAB/21dLeCWNnqk8RV58ZnpPucqEpJvNa02Aks7FjZP7LcNZMtQ0zN1TBjCqFp5SLqJq6g==
+     physical_name : .\TEST_PRINCIPALE.wxt
+     type : 17
+   -
+     name : ProceduresGlobales
+     identifier : 0x3d9341a16b5b6b4c
+     internal_properties : CAAAAAgAAABm7E5SUQ4myZaVLrsZNM2uhPHTOwJc4Y2A0o49K+W3Ub8jDoiHsbisr2lTrXVrF4lz8w==
+     physical_name : .\ProceduresGlobales.wdg
+     type : 7
+   -
+     name : FEN_OUINON
+     identifier : 0x3f9eae5d423a1792
+     internal_properties : CAAAAAgAAABRrYmdKlffkF8u+/Am8vjJO0gGLgFD3oGgms79CRd/sUPdslTKdoP5+CKcZCykXEy0vA==
+     physical_name : .\FEN_OUINON.wdw
+     type : 2
+   -
+     name : Aide WD Zip
+     identifier : 0x437ddd3700058d00
+     internal_properties : CAAAAAgAAAAJgp3D7N4l0UAvg1ZiAXQx8ZkaCn3Kqr+oHY7mt91hT9XUUhB/1o/08/gA
+     physical_name : .\Aide WD Zip.WDH
+     type : 6
+   -
+     name : FEN_PRINCIPALE
+     identifier : 0x3f9d5e1b07f1a978
+     internal_properties : CAAAAAgAAACyiOo+DXoybUoJUk9NjGGymLXnT5V3FymFBXUhmrXfESc7FvAj3exgEw33wUG/uy2Xnw==
+     physical_name : .\FEN_PRINCIPALE.wdw
+     type : 2
+   -
+     name : FEN_DECOUPE_ARCHIVE
+     identifier : 0x3f9ffbaa266e4c20
+     internal_properties : CAAAAAgAAADXsz9jQD11dsGE3dbE5PYboT5EFIf51Y6gmtjzZ4mVY51XlHKsVGXbnpgC/oZ6BvrCQg==
+     physical_name : .\FEN_DECOUPE_ARCHIVE.wdw
+     type : 2
+   -
+     name : FEN_REPERTOIRE_EXTRACTION
+     identifier : 0x3f9e9c9e4204caaa
+     internal_properties : CAAAAAgAAABwzqj0M2hAW2TnBJ0zJCPQ3o/FnVdKJ4fEEW5uIg0HCQsLwrRti56SQfvl01ONdWtV3Q==
+     physical_name : .\FEN_REPERTOIRE_EXTRACTION.wdw
+     type : 2
+   -
+     name : COL_LanceAppli
+     identifier : 0x463b79ef003ffcea
+     internal_properties : CAAAAAgAAACY9kBcaxAYw44nudsNX31lVNdTizhaBYVExd80vCTwOPQqoGzWYh2o61NNq2tlHZN9hQ==
+     physical_name : .\COL_LanceAppli.wdg
+     type : 7
+   -
+     name : COL_SHELL_ASSOCIATION
+     identifier : 0x463b694a003df768
+     internal_properties : CAAAAAgAAAD9WdXJ9qMLFC2aDF2M1I9eI7DeFppyUPur4RAvAj/XKdsVFdJUrK6LjrYgmBjIsCDoaA==
+     physical_name : .\COL_SHELL_ASSOCIATION.wdg
+     type : 7
+   -
+     name : COL_GestionArchivage
+     identifier : 0x463ca2cc00dc9cbf
+     internal_properties : CAAAAAgAAAA3Ex8DoJ2VlqMN1RPM0/Qx+aQwICtFAKavlDR2+hx2+h4in/3oGNQ6ADiiHuYa5toiIg==
+     physical_name : .\COL_GestionArchivage.wdg
+     type : 7
+   -
+     name : FEN_ATTENTE_TRAITEMENT
+     identifier : 0x463c8c0700daaccd
+     internal_properties : CAAAAAgAAADjX9vP/KkBGieBU2I8ubbd21TWBrvduHS30mRv/TnlM/EvmBTLffq+hLwmkhLOqh7mbg==
+     physical_name : .\FEN_ATTENTE_TRAITEMENT.wdw
+     type : 2
+   -
+     name : Nouveauté_WD_Zip
+     identifier : 0x46420aff0065e28e
+     internal_properties : CAAAAAgAAAAbkK/pFKE/XpKfkMMQsSxBwfECctXW3vtMeQpCy9mnsl26aKE2YiUKxQoS
+     physical_name : .\Nouveaute_WD_Zip.WDH
+     type : 6
+   -
+     name : COL_DragAndDrop_Explorer
+     identifier : 0x4661acb100726f4a
+     internal_properties : CAAAAAgAAAC/m5eLOGVNXmvKkZYMmZe4l9pWzoPly7eENUu4TsJIqGxQ2JfEPIV3SPDq1l6SbmKqqg==
+     physical_name : .\COL_DragAndDrop_Explorer.wdg
+     type : 7
+   -
+     name : FEN_MotDePasse
+     identifier : 0x4c6fcc0e00bf177f
+     internal_properties : CAAAAAgAAACzj+s/DHkxap1k1e9gwn1Ph6DCEpHDNG6guviT0z3ZJ8V7BoFD/dHzGgz2wkK+ui6Wng==
+     physical_name : .\FEN_MotDePasse.wdw
+     type : 2
+  other_elements :
+   -
+     physical_name : .\diode_verte_eteinte.gif
+   -
+     physical_name : .\diode_rouge_allumee.gif
+   -
+     physical_name : .\diode_rouge_eteinte.gif
+   -
+     physical_name : .\diode_verte_allumee.gif
+   -
+     physical_name : .\Description.rtf
+   -
+     physical_name : .\Description.gif
+  net_assemblies :
+   -
+     name : System
+     internal_properties : CAAAAAgAAAAyTlCTdBme2sRHCGaIXE3x9C7MGISwdLb4VA==
+     description : "System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+     physical_name : System.dll
+   -
+     name : System.Windows.Forms
+     internal_properties : CAAAAAgAAAAyTlCTdBme2sRHCGaIXE3x9C7MGISwdLb4VA==
+     description : "System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+     physical_name : System.Windows.Forms.dll
+  uwp_api : []
+  external_components : []
+  internal_components : []
+ report_and_queries_enabled : false
+ common_generation_directory : true
+ languages :
+  - fr-FR
+ wd_style_sheet : ".\\WD Zip.sty\r\n.\\WD ZIP.sty"
+ code_elements :
+  internal_properties : CAAAAAgAAACKaUsOQwLMGFqHBqXLMcdoof+xiHHAyBRkmBDwRa+E4ITzJjhy+sMsjsVfOuU6blP1Be0jAjYJczZPKgSBEIqzhV+NPQfQ29A1VmPMNi9z7bVvTaOdBv+UxYnT1DvlzeRY+MFv0UypiznCfGjY7iP963+GrLyZfdFD/b9xv1d3Jed210XokPeicQjEC2UvjxIkTydlPhhjxClRgKMBe/E=
+  type_code : 0
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAABGj7hefZCKMVkOMZa7tErZEnxH+0WcpQT8eBKbC2A2S/xWlRiojg7f9YV1yyikOhH/tEiN8lcu1u6Z+6/JQpitdK7cjzfB4cf1kzIkOY7rZIZs2vvKBCr/h38WPwmuXwzQa98bxnDsCWvn53a6MkJT1KfIvawb339e5BefoAgrafqxDvM4kMcEW8igb4pqURMC
+     code : |1+
+      EXTERN "WINCONST.WL"
+      
+      GLOBAL
+      	gMonArchive est une zipArchive 
+      	gsBaseDeRegistre	est une chaîne
+      	gsArchive			est une chaine
+      	geTraitement est une EAction
+      	gbAffichageModeRépertoire est un booléen
+      	
+      	ERetourOUINON est une énumération
+      		OUI_POUR_1
+      		NON_POUR_1
+      		OUI_POUR_TOUS
+      		NON_POUR_TOUS
+      		ANNULER_TRAITEMENT
+      	FIN
+      	
+      	EAction est une énumération
+      		Ouvrir = "Ouvrir l'archive"
+      		Extraire_ici = "Extraire ici"
+      		Extraire_rep = "Extraire dans le dossier"
+      		AjouterFile_choisir_archive = "Ajouter à l'archive..."
+      		Compress_wdz = "Compresser en .wdz"
+      		Compress_zip = "Compresser en .zip"
+      	FIN
+      	
+      	
+      LOCAL
+      	
+      
+      	
+      // Créer la clé dans la base de registre
+      gsBaseDeRegistre = ProjetInfo(piRegistre)
+      RegistreCréeClé(gsBaseDeRegistre)
+      
+      
+      
+      // On vérifie si on est en mode test
+      si EnModeTest() = faux et EnModeTestAutomatique() = Faux ALORS
+      	// On vérifie si l'on a besoin de lancer l'appli en mode administrateur pour les menus du programme
+      	SI ChargeParamètre("RegistreOK",Faux)=vrai ALORS
+      				
+      		si Association_Complete() =faux ALORS
+      			Dissociation_Complete()
+      			FinProgramme()
+      		FIN
+      			
+      		// On sauvegarde le fait que l'application ne soit plus associées aux fichiers d'archive.
+      		SauveParamètre("RegistreOK",Faux)
+      		SauveParamètre("EtatRegistre",vrai)
+      		
+      		FinProgramme()
+      	FIN
+      FIN
+      
+      
+      
+      // Doit on supprimer l'association des fichiers d'archive à l'application WD Zip
+      SI  ChargeParamètre("SupprimerRegistre",Faux)=vrai ALORS
+      	
+      	Dissociation_Complete()
+      	
+      	// On sauvegarde le fait que l'application ne soit plus associées aux fichiers d'archive.
+      	SauveParamètre("SupprimerRegistre",faux)
+      	SauveParamètre("EtatRegistre",faux)
+      	
+      	FinProgramme()
+      FIN
+      
+      
+      
+      // On déclare toutes les actions possibles
+      e1 est une EAction = Ouvrir
+      e2 est une EAction = Extraire_ici
+      e3 est une EAction = Extraire_rep 
+      e4 est une EAction = AjouterFile_choisir_archive
+      e5 est une EAction = Compress_zip
+      e6 est une EAction = Compress_wdz
+      
+      
+      // On vérifie si l'application est appelé avec des paramètres d'action
+      si LigneCommande(1) <> "" ALORS
+      	
+      	// Selon l'action choisie, on ouvre la fenêtre avec le traitement nécessaire (geTraitement = action demandée pour FEN_ATTENTE_TRAITEMENT)
+      	selon LigneCommande(1)
+      	
+      		cas MiseEnFormeParamètre(e1..valeur)
+      			// Le deuxième paramètre de la ligne de commande contient la valeur du fichier à ouvrir
+      			ouvre(FEN_PRINCIPALE,2)
+      			
+      		// Cas ou on ne passe pas par l'interface principale
+      		CAS MiseEnFormeParamètre(e2..Valeur)
+      			geTraitement = e2
+      			Ouvre(FEN_ATTENTE_TRAITEMENT,Faux)
+      			                                 
+      		CAS MiseEnFormeParamètre(e3..Valeur) 
+      			geTraitement=e3                  
+      			Ouvre(FEN_ATTENTE_TRAITEMENT,Faux)
+      			                                 
+      		CAS MiseEnFormeParamètre(e4..Valeur) 
+      			geTraitement=e4                  
+      			Ouvre(FEN_ATTENTE_TRAITEMENT,Faux)
+      			                                 
+      		CAS MiseEnFormeParamètre(e5..Valeur) 
+      			geTraitement=e5                  
+      			Ouvre(FEN_ATTENTE_TRAITEMENT,Faux)
+      			                                 
+      		CAS MiseEnFormeParamètre(e6..Valeur)
+      			geTraitement=e6                  
+      			Ouvre(FEN_ATTENTE_TRAITEMENT,Faux)	
+      			
+      		AUTRE CAS
+      			// Le premier paramètre de la ligne de commande contient la valeur du fichier à ouvrir
+      			ouvre(FEN_PRINCIPALE,1)	
+      	FIN
+      sinon
+      	Ouvre(FEN_PRINCIPALE,0)
+      FIN
+     type : 196608
+   -
+     code : |1-
+      
+     type : 196610
+   -
+     code : |1-
+      
+     type : 196619
+   -
+     type : 196621
+   -
+     type : 196627
+     enabled : false
+  orphans :
+   -
+     name : " WD Zip"
+     identifier : 0x4acc51c8002ff6cd
+     code_elements :
+      type_code : 159
+      p_codes : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+rad :
+ internal_properties : CAAAAAgAAABhIL0UXeZmxDJxY3Xy0Q==
+project_explorer :
+ explorer_type : project
+ children :
+  -
+    name : Feedback
+    explorer_type : custom_folder
+resources :
+ string_res :
+  identifier : 0x0
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      fr-FR : Ouvrir l'archive
+     index : 0
+   -
+     text :
+      fr-FR : Extraire ici
+     index : 1
+   -
+     text :
+      fr-FR : Extraire dans le dossier
+     index : 2
+   -
+     text :
+      fr-FR : Ajouter à l'archive...
+     index : 3
+   -
+     text :
+      fr-FR : Compresser en .wdz
+     index : 4
+   -
+     text :
+      fr-FR : Compresser en .zip
+     index : 5
+custom_note :
+ internal_properties : CAAAAAgAAAAd98VSJfHHqE3P0QHwrwdhn7ig8dWBR6valpUTgnAMTVXiDg==

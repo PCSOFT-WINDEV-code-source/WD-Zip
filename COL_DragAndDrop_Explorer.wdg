@@ -1,0 +1,259 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_DragAndDrop_Explorer
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x1661acaf00606883
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  internal_properties : CAAAAAgAAAAcvePn5wa+zMeAyb8SzKm26Dv1mc1Rm6mMIPBGeg0u5K6QVB+GspSyOQvVHt2V/EzqoT+8Y7a+7GWxwH2P8OSG1WG9rklcIqfHxFbRLpNPjXGGiVLEckRBvcxlrFdV+IfuCKpl1Uql4AUJPesmAbEDFg==
+  type_code : 31
+  p_codes :
+   -
+     code : |1-
+      gtabSystemWatcher est un tableau de System.IO.FileSystemWatcher dynamique
+      sFichierObserve est une chaine = fRepExe+ [fSep] +"DNDEMPLACEMENT.COPYFILEWDZIP"
+      gnIndiceFichier est un entier
+     type : 720896
+  procedures :
+   -
+     name : LanceObservateur
+     internal_properties : CAAAAAgAAADoQzQSD6xYmRaG603Ketse25DcXNp/gV6cRlil7Xjq18KPwWS5HrR9fDTW0PYi5crgEIxlfhJZ88wIKU40MLT5oxy6+kQWk6rakv56pJ22pTab8Z3VnkvopMk0NusUrs9bmrkb7OGtVqiTji10iIFg/VvXmjBlIMew7ay+vWEPxg7A4qoH5i0I/KmrsXQUVW2L0mUYC4A=
+     procedure_id : 1612760369978323014
+     type_code : 15
+     code : |1+
+      // Résumé : Créer un fichier et l'observe pour le drag and drop
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE LanceObservateur()
+      nTypeDisque est un entier 
+      // On crée un fichier pour l'observer
+      gnIndiceFichier =fCrée(sFichierObserve)
+      si gnIndiceFichier=-1 ALORS
+      	ErreurDéclenche(500,"Erreur lors du drag and drop vers l'explorateur.")
+      FIN
+      
+      
+      pour TOUTE CHAINE disque DE fListeDisque() SEPAREE PAR rc
+      	// Disque valide pour un drag and drop ? 
+      	nTypeDisque = fDisqueInfo(disque,fdTypeDisque)
+      	SI  nTypeDisque = fdRéseau OU nTypeDisque = fdRAM OU nTypeDisque = fdFixe OU nTypeDisque = fdFixe  ALORS
+      
+      		sChaineDisque est une chaine UNICODE= disque + [fsep]
+      		// On créer un observateur de fichier
+      		clObservateur est un "System.IO.FileSystemWatcher"
+      		
+      		pclEventFilechange est un "FileSystemEventHandler" dynamique
+      		
+      		//Mise en place de la surveillance automatique
+      		
+      		pclEventFilechange = DotNetDélégué("COL_DragAndDrop_Explorer.Extraction_DNDExplorateur","FileSystemEventHandler") //Procédure de traitement
+      		
+      		// On choisit ce que l'on doit observer
+      		clObservateur.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size
+      		clObservateur:Path = sChaineDisque //Répertoire à surveiller
+      		clObservateur:IncludeSubdirectories = True //Avec les sous-répertoire
+      		clObservateur:Filter = "*.COPYFILEWDZIP" //Type de fichiers à surveiller
+      		
+      		clObservateur:add_Created(pclEventFilechange)	
+      		
+      		// On active l'observation
+      		clObservateur:EnableRaisingEvents = True 
+      		
+      		// On vérifie que l'objet est bien instancié 
+      		si clObservateur<> null ALORS
+      			TableauAjoute(gtabSystemWatcher,clObservateur)		
+      		FIN
+      		
+      	FIN
+      FIN
+      
+     type : 458752
+   -
+     name : DebuteDND
+     internal_properties : CAAAAAgAAABVRRy6Qpk9sx8hqcSfkUECsEp9NYj96o9pGCoU32DJyrmQAW6QxlDPeeUcR8K3T7x+TZ0d5Vjg8lJierfU+8SfJSFKZYXuetylYMXtmoUpA/UTCFaC7KmWM8GgiE1VKvRZw4AAFHD1sIoc2g9ELyrP7zRq6/7CTG0wHEJ2G4hQrVQ0KuMpCMk/H1Qi2L6pdT0fYRAlmeRVkcgTTSZjlz56bXgvgw/ee44SJaX3ryLWjhOi9K2j2zUygegYiz6mLcRCwg==
+     procedure_id : 1612760408633103198
+     type_code : 15
+     code : |1+
+      // Résumé : Débute un Drag and drop vers l'explorateur, avec le fichier passé en paramètre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      //	sMonFic (chaîne ANSI) :Fichier que l'on observe pour connaître le répertoire ou l'on termine le drag and drop
+      PROCEDURE DebuteDND()
+      bufDonneesDrop est une Buffer
+      
+      // Structure Windows permettant de gérer 
+      // le Glisser/Déplacer avec l'explorateur
+      POINT est une Structure
+      	x, y sont des entiers
+      FIN
+      
+      DROPFILES est une Structure
+      	// Pointeur vers la liste des fichiers
+      	pFiles est un entier
+      	// Position d'origine de la souris
+      	PT est un POINT
+      	// Réservé
+      	fNC est un booléen 
+      	// Vrai si la liste des fichiers est en UNICODE, Faux sinon
+      	fWide est un booléen 
+      FIN
+      
+      // Remplit une structure HDROP
+      stDROPFILES est un DROPFILES
+      stDROPFILES:fWide = Vrai // Faux pour Ansi, sinon Unicode, 
+      stDROPFILES:fNC = Vrai // Coordonnées de PT dans zone cliente
+      stDROPFILES:PT:x = 0
+      stDROPFILES:PT:y = 0
+      stDROPFILES:pFiles = Dimension(stDROPFILES) // Taille de la structure
+      
+      // sListeCheminFichier contient la liste des fichiers séparés par RC
+      // pour les multi-fichiers, le RC est remplacé par un zéro binaire, 
+      // et les 2 zéro binaires de terminaison sont ajoutés
+      bufListeDeFichiers est un Buffer
+      SI TypeVar(sFichierObserve) = wlChaîneUnicode ALORS
+      	bufListeDeFichiers = Remplace(sFichierObserve, RC, ...
+      	CaractUnicode(0)) + CaractUnicode(0) + CaractUnicode(0)
+      	stDROPFILES:fWide = Vrai // Vrai pour Unicode
+      SINON
+      	bufListeDeFichiers = Remplace(sFichierObserve, RC, ...
+      	Caract(0)) + Caract(0) + Caract(0)
+      	stDROPFILES:fWide = Faux // Faux pour Ansi, sinon Unicode, 
+      FIN
+      
+      // Transfert du contenu de la structure dans le buffer
+      // Calcul de la taille totale nécessaire : 
+      // taille de la structure et de la taille des noms de fichiers 
+      // avec les 2 zéros binaires unicode de terminaison
+      nTaille est un entier
+      nTaille = Dimension(stDROPFILES) + Taille(bufListeDeFichiers)
+      
+      // Alloue un buffer pour toutes les informations du DROP
+      // à la taille souhaitée avec des 0 binaire dedans
+      bufDonneesDrop = Répète(Caract(0), nTaille)
+      // Met les informations de la structure stDROPFILES dans le buffer
+      Transfert(&bufDonneesDrop, &stDROPFILES, Dimension(stDROPFILES))
+      // A la suite du buffer, met les noms des fichiers
+      Transfert(&bufDonneesDrop + Dimension(stDROPFILES), ...
+      &bufListeDeFichiers, Taille(bufListeDeFichiers))
+      
+      // Indique que c'est un DROP de fichier
+      DnDDonne(CF_HDROP, &bufDonneesDrop, 500)
+     type : 458752
+   -
+     name : FinDND
+     procedure_id : 1612760438697946103
+     type_code : 15
+     code : |1-
+      // Résumé : Fin du drag and drop, on extrait le contenu sélectionné
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      //	sMonFic (chaîne ANSI) : <indiquez ici le rôle de sMonFic>
+      PROCEDURE FinDND()
+      
+      // SI annulation du DND, on supprime le fichier que l'on observait, on stop les observateurs
+      si fFichierExiste(sFichierObserve) = vrai ALORS
+      	fFerme(gnIndiceFichier)
+      	fSupprime(sFichierObserve)
+      FIN
+      
+      StopObservateur()
+     type : 458752
+   -
+     name : Extraction_DNDExplorateur
+     internal_properties : CAAAAAgAAABj6sGvENlB+CtPO8HAJzZPUf4ImIivy0TUnbdT21WKEu2YaHwuTkl+0yZ5WcWr4mN7SNMMG78ldUHy7DdlkqiulmA+2psSt7oUDVkI+lb5X7luBwEbx5BBwyVrssLtaMBsmQxHw7RFm7foNnJMgpsn2O7EHAff516dYtL0395YvpCAmv/Ilgdok86PR9oVDM8=
+     procedure_id : 1612765283431949246
+     type_code : 15
+     code : |1+
+      // Résumé : Callback pour des observateurs de fichier
+      // Paramètres :
+      //	src :Source de la callback
+      //	args :Argument de la callback
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE Extraction_DNDExplorateur(src <utile>,args <utile>)
+      
+      
+      sCheminExtraction est une chaine = args.FullPath
+      // On supprime le fichier qui a été drag and drop
+      tantque fSupprime(sCheminExtraction)=faux
+      	ThreadPause(5)
+      FIN
+      
+      // On stop les observateurs
+      StopObservateur()
+      
+      SI fFichierExiste(sFichierObserve) = Vrai ALORS
+      	fFerme(gnIndiceFichier)
+      	fSupprime(sFichierObserve)
+      FIN
+      
+      // On extrait les fichiers sélectionnés à l'emplacement désiré
+      ExécuteThreadPrincipal(FEN_PRINCIPALE.ExtractionDND_Explorateur,fExtraitChemin(sCheminExtraction,fDisque+fRépertoire)+[fsep])
+      
+      // Fin du thread automatique
+      ThreadFin()
+     type : 458752
+   -
+     name : StopObservateur
+     procedure_id : 1612766511792684825
+     type_code : 15
+     code : |1+
+      // Résumé : Stop les observateurs du drag and drop vers l'explorateur
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE StopObservateur()
+      // Observateur vide
+      si gtabSystemWatcher..Occurrence = 0 ALORS
+      	retour
+      FIN
+      
+      pour i=1 _a_ gtabSystemWatcher..Occurrence
+      	quand Exception dans
+      		// On stop l'observation
+      		gtabSystemWatcher[i]:EnableRaisingEvents = False
+      		
+      		// On libère l'objet
+      		libérer gtabSystemWatcher[i]
+      	FAIRE
+      		// Si le RaisingEvents n'est pas enclenché
+      		
+      		// On libère l'objet
+      		libérer gtabSystemWatcher[i] 
+      	FIN
+      
+      FIN
+      
+      TableauSupprimeTout(gtabSystemWatcher)
+      
+      
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x10f6cbc00a9e1658
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

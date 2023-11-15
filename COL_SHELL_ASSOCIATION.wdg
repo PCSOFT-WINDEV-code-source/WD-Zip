@@ -1,0 +1,514 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_SHELL_ASSOCIATION
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x11cd3fdb01e0e849
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  internal_properties : CAAAAAgAAAAdC5DaGsntqmfkq1J4p6eipmeEO//QiIdypV0FB6KY+wiPKnW2KoJpaKmeXvb1NGpH4KGGthHXu/V4LqeilI4jnJwO5Q==
+  type_code : 31
+  p_codes :
+   -
+     code : |1-
+      
+     type : 720896
+   -
+     code : |1-
+      
+     type : 720898
+  procedures :
+   -
+     name : SysMenuFichier
+     internal_properties : CAAAAAgAAAB++bqcsRpN+XRki2lW6LNqxbI+MgbFISZOsDDJGW7iR3CtG0rZqOSZ/obyUNZ0oRq+jmZbfgRR494aUeYMGkz9tcZQZPDM+47EzM7N9SJpEgeU9IIGq1DvvdLNXdgFvdhEk6TYbU7yLWGcNyhJocz1etju+9UeGb6xLi35/jY259MNtUdkR5bz6cZI0FUx9Jc1aPOKhQ4=
+     procedure_id : 1602006068222463400
+     type_code : 15
+     group : 2
+     code : |1-
+      // Résumé : Ajoute un menu pour tous les fichiers dans le registre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération à réussit, faux sinon
+      
+      
+      PROCEDURE SysMenuFichier() : booléen
+      sClé est une chaine unicode
+      sAction est une chaine UNICODE = "WDZip"
+      sMaChaineCommande est une chaine
+      
+      // On passe au type de fichier
+      sClé = "HKEY_CLASSES_ROOT\*\"
+      
+      // Crée le type de fichier
+      SI RegistreExiste(sClé) _OU_ RegistreCréeClé(sClé) ALORS
+      	
+      	// Crée l'action Shell
+      	SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      		
+      		// Enregistre l'action
+      		SI RegistreExiste(sClé + ["\"] + "Shell" + ["\"] + "WDZip") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell" + ["\"] + sAction) ALORS
+      			
+      			si RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "MUIVerb", "WD Zip", RegistreTypeChaîne)=Faux ALORS
+      				ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      			FIN
+      			
+      			SI RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "Icon", fRepExe()+[fSep]+"WDZip.ico", RegistreTypeChaîne) = Faux ALORS
+      				ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      			FIN
+      			
+      			e1 est une EAction = Ouvrir
+      			e2 est une EAction = Extraire_ici
+      			e3 est une EAction = Extraire_rep
+      			e4 est une EAction = AjouterFile_choisir_archive
+      			e5 est une EAction = Compress_zip
+      			e6 est une EAction = Compress_wdz		
+      			
+      			// On crée la liste des commandes
+      			sMaChaineCommande = MiseEnFormeParamètre(e1..Valeur)+";"+MiseEnFormeParamètre(e2..Valeur)+";"+MiseEnFormeParamètre(e3..Valeur)+";" + ...
+      			MiseEnFormeParamètre(e4..Valeur)+";"+MiseEnFormeParamètre(e5..Valeur)+";"+MiseEnFormeParamètre(e6..Valeur)
+      			
+      			si RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "SubCommands",sMaChaineCommande , RegistreTypeChaîne)= faux ALORS
+      				ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      			FIN
+      			
+      			
+      			RENVOYER Vrai
+      		FIN
+      	FIN
+      FIN
+      
+      ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      
+      RENVOYER Faux
+     type : 458752
+   -
+     name : SysMenuRepertoire
+     internal_properties : CAAAAAgAAAA+uXrccVoN2TSki6mWaLPqhbK+8gbFoebOMHDJGa4ih3Bt28qZ6CSZPkbyEBZ0oRp+jmYbfgRRI16aEWYM2oy9tQYQZDAMu44EjM7tVcKJ8md01OJmy7BP3fKtfTil3bgk84Q4ze7SDQE8l8ipQWxV2rjOW7W+eZ5RTo2ZXtZWxzPtFafE5/bTieaocLXRtNf1qLNKxc4=
+     procedure_id : 1602006115467180333
+     type_code : 15
+     group : 2
+     code : |1-
+      // Résumé : Ajoute un menu pour les répertoires dans le registre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération a réussit, faux sinon
+      //
+      
+      PROCEDURE SysMenuRepertoire() : booléen
+      sClé est une chaine unicode
+      sAction est une chaine UNICODE = "WDZip"
+      sMaChaineCommande est une chaine 
+      
+      // On passe au type de fichier
+      sClé = "HKEY_CLASSES_ROOT\Directory\"
+      
+      // Crée le type de fichier
+      SI RegistreExiste(sClé) _OU_ RegistreCréeClé(sClé) ALORS
+      	
+      	// Crée l'action Shell
+      	SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      		
+      		// Enregistre l'action
+      		SI RegistreExiste(sClé + ["\"] + "Shell" + ["\"] + "WDZip") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell" + ["\"] + sAction) ALORS
+      			
+      			si RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "MUIVerb", "WD Zip", RegistreTypeChaîne)=Faux ALORS
+      				ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      			FIN
+      			si RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "Icon", fRepExe()+[fSep]+"WDZip.ico", RegistreTypeChaîne)=Faux ALORS
+      				ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      			FIN
+      			
+      			e1 est une EAction = AjouterFile_choisir_archive
+      		    e2 est une EAction = Compress_zip
+      			e3 est une EAction = Compress_wdz
+      			
+      			// On crée la liste des commandes
+      			sMaChaineCommande = MiseEnFormeParamètre(e1..Valeur)+";"+MiseEnFormeParamètre(e2..Valeur)+";"+MiseEnFormeParamètre(e3..Valeur)
+      			
+      			si RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "SubCommands", sMaChaineCommande, RegistreTypeChaîne)	=Faux ALORS
+      				ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      			FIN
+      			
+      			RENVOYER Vrai
+      		FIN
+      	FIN
+      FIN
+      
+      ErreurDéclenche(500,<§@11cd3fdb01dfe8490002§>)
+      
+      RENVOYER Faux
+     type : 458752
+   -
+     name : SysMenuOptions
+     internal_properties : CAAAAAgAAACXq2sPsX+VMxs2ClTvsbbvl0ArgvVMFX3dHmKdtI3/8VQlJ/wmvEtTNEeQdyiQwVwZ0ur/pHDsJWf8wHgsu+SxgtfTeLfzRMPgbFVpgP9DuRN/JUrKx/PwL+m8q5UZ3ooR7s1vf9Tv/LzdjnU59sACzTvETBOGB0VXKWmuvE293mVx2iVleKZ4XG4mBGF3d96YiXCc6JlSPskc1RX1wtoDhaLXIJmJMu5H0u4aeGgj+Qg/QpeZnBSRbAOredC8fV+1AS5uWdb6U1YXmbVHHqfENnONp6uzjvnBt7iDgOLoRhkQGwD3wf+0h3iPlha2yYlgIohjvadtKE69lASEIw==
+     procedure_id : 1602006141237055223
+     type_code : 15
+     group : 2
+     code : |1-
+      // Résumé : Ajoute les options aux menu crées précédemment dans le registre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération a réussit, faux sinon
+      //
+      
+      PROCEDURE SysMenuOptions() : booléen
+      sClé est une chaine unicode
+      sAction est une chaine UNICODE = "WDZip"
+      
+      // Valeur de l'action et de la commande pour écrire dans le registre
+      sMonAction est une chaîne ansi
+      sMaCommande est une chaîne ansi 
+      sMonEnum est une chaîne ANSI 
+      
+      // Utilisé pour les API, si l'application est 32 bits sur un système 64 bits
+      nHkey est un entier système
+      nDwDisposition est un entier système
+      
+      nKEY_ALL_ACCESS est un entier système = 0xF003F 
+      nKEY_WRITE est un entier système = 0x20006
+      nKEY_WOW64_64KEY est un entier système = 0x0100
+      
+      // On passe au type de fichier
+      sClé = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\"
+      
+      // Crée le type de fichier
+      SI RegistreExiste(sClé) _OU_ RegistreCréeClé(sClé) ALORS
+      	
+      	// Crée l'action Shell
+      	SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      		
+      		e1 est une EAction = Ouvrir
+      		e2 est une EAction = Extraire_ici
+      		e3 est une EAction = Extraire_rep 
+      		e4 est une EAction = AjouterFile_choisir_archive
+      		e5 est une EAction = Compress_zip
+      		e6 est une EAction = Compress_wdz
+      				
+      		// On parcours les actions à ajouter
+      		POUR TOUT eEnum DE [e1,e2,e3,e4,e5,e6]
+      		 
+      		 	// On récupère la valeur de la command, ainsi que le nom de l'option (l'action)
+      			sMaCommande = ExeInfo(exeNom) +" "+""""+  MiseEnFormeParamètre(eEnum..Valeur)+"""" + " ""%1"""
+      			sMonAction  = MiseEnFormeParamètre(eEnum..Valeur)
+      			sMonEnum = eEnum..Valeur
+      			
+      			si VersionWindows() = 32 ALORS
+      				// On créer les clées
+      				si RegistreCréeClé(sClé + ["\"] + "Shell" + ["\"] + sMonAction )=Faux ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN
+      				
+      				si RegistreCréeClé(sClé + ["\"] + "Shell" + ["\"] + sMonAction + ["\"] + "Command")=Faux ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN
+      				
+      				// On écrit la valeur de la commande de l'action		
+      				si RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sMonAction + ["\"] + "Command" , "" ,sMaCommande , RegistreTypeChaîne)=Faux ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN
+      				
+      				// On écrit la valeur par défaut de l'action 		
+      				SI RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sMonAction , "" ,sMonEnum , RegistreTypeChaîne)=Faux ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN
+      				
+      			sinon			
+      				
+      				// On crée la clé d'action
+      				si AppelDLL32("kernel32.dll","RegCreateKeyExA",2147483650,"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CommandStore\\shell\\"+sMonAction,0,null,0,0x0100|0x20006|0xF003F,null,&nHkey,nDwDisposition)<>0 ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN
+      				
+      				// On ajoute la bonne valeur a l'action
+      				SI AppelDLL32("kernel32.dll","RegSetValueExA",nHkey,"",0,1,sMonEnum,Taille(sMonEnum)+1)<> 0 ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN	
+      								
+      				// On crée la clé "command" de l'action
+      				si AppelDLL32("kernel32.dll","RegCreateKeyExA",2147483650,"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CommandStore\\shell\\"+sMonAction+"\\command",0,Null,0,0x0100|0x20006|0xF003F,Null,&nHkey,nDwDisposition)<>0 ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN
+      				
+      				// On ajoute la bonne valeur a la "command" de l'action
+      				si AppelDLL32("kernel32.dll","RegSetValueExA",nHkey,"",0,1,sMaCommande,taille(sMaCommande)+1)<> 0 ALORS
+      					ErreurDéclenche(500,<§@11cd3fdb01dfe8490003§>)
+      				FIN	
+      			fin
+      		FIN
+      	FIN
+      	
+      	RENVOYER Vrai
+      FIN
+      
+      ErreurDéclenche(500,<§@11cd3fdb01dfe8490000§>)
+      
+      RENVOYER Faux
+     type : 458752
+   -
+     name : SysEnleveMenuFichier
+     procedure_id : 1602012562214527436
+     type_code : 15
+     group : 4
+     code : |1-
+      // Résumé : Enlève le menu pour tous les fichiers dans le registre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération à réussit, faux sinon
+      
+      
+      PROCEDURE SysEnleveMenuFichier() : booléen
+      sClé est une chaine unicode
+      sAction est une chaine UNICODE = "WDZip"
+      
+      // On passe au type de fichier
+      sClé = "HKEY_CLASSES_ROOT\*\"
+      
+      // Crée le type de fichier
+      SI RegistreExiste(sClé) _OU_ RegistreCréeClé(sClé) ALORS
+      	
+      	// Crée l'action Shell
+      	SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      		
+      		// Enregistre l'action
+      		SI RegistreExiste(sClé + ["\"] + "Shell" + ["\"] + sAction) ALORS
+      			
+      			si RegistreSupprimeClé(sClé + ["\"] + "Shell" + ["\"] + sAction)= Vrai ALORS
+      				RENVOYER Vrai			
+      			FIN
+      	
+      		FIN
+      	FIN
+      FIN
+      
+      ErreurDéclenche(500,<§@11cd3fdb01dfe8490001§> +rc +  erreurinfo(errComplet))
+      
+      RENVOYER Faux
+     type : 458752
+   -
+     name : SysEnleveMenuRepertoire
+     procedure_id : 1602020520790058232
+     type_code : 15
+     group : 4
+     code : |1-
+      // Résumé : Enlève menu pour tous les répertoires dans le registre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération à réussit, faux sinon
+      
+      
+      PROCEDURE SysEnleveMenuRepertoire() : booléen
+      sClé est une chaine unicode
+      sAction est une chaine UNICODE = "WDZip"
+      
+      // On passe au type de fichier
+      sClé = "HKEY_CLASSES_ROOT\Directory\"
+      
+      // Crée le type de fichier
+      SI RegistreExiste(sClé) _OU_ RegistreCréeClé(sClé) ALORS
+      	
+      	// Crée l'action Shell
+      	SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      		
+      		// Enregistre l'action
+      		SI RegistreExiste(sClé + ["\"] + "Shell" + ["\"] + sAction) ALORS
+      			
+      			si RegistreSupprimeClé(sClé + ["\"] + "Shell" + ["\"] + sAction)=Vrai ALORS
+      				RENVOYER Vrai	
+      			FIN			
+      		FIN
+      	FIN
+      FIN
+      
+      ErreurDéclenche(500,<§@11cd3fdb01dfe8490001§>+rc +  erreurinfo(errComplet))
+      
+      RENVOYER Faux
+     type : 458752
+   -
+     name : SysEnleveMenuOptions
+     internal_properties : CAAAAAgAAACuwXnylExNYDo6dYUkcKusU8ZwO1NY1816qJGXk9gGiAomdqy0vpr5jqfAf3jHmbuNSoLWNBrdkMxlfJCwYiwwE17jmRZ4kkLNEvq/eyB5v97cWsmmyH/4xzpC62Q4vIUxBAZN0ZdLYIEKaNTfiGNiaXsm3itBHJcdcAphpjkDfksxzLHdDzr71kGmX56xS0T8RvtPXZwvvYzVlVHqvDTyrqAj1A==
+     procedure_id : 1602020529380060266
+     type_code : 15
+     group : 4
+     code : |1-
+      // Résumé : Enlève les options des menus dans le registre
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération à réussit, faux sinon
+      
+      
+      PROCEDURE SysEnleveMenuOptions() : booléen
+      sClé est une chaine unicode
+      sAction est une chaine UNICODE = "WDZip"
+      
+      
+      
+      // On passe au type de fichier
+      sClé = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\"
+      
+      // Crée le type de fichier
+      SI RegistreExiste(sClé) _OU_ RegistreCréeClé(sClé) ALORS
+      	
+      	// Crée l'action Shell
+      	SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      		
+      		// On liste les actions
+      		e1 est une EAction = Ouvrir
+      		e2 est une EAction = Extraire_ici
+      		e3 est une EAction = AjouterFile_choisir_archive
+      		e4 est une EAction = Compress_zip
+      		e5 est une EAction = Compress_wdz
+      		e6 est une EAction = Extraire_rep
+      		
+      		// On parcours les actions à ajouter
+      		POUR TOUT eEnum DE [e1,e2,e3,e4,e5,e6]
+      			MonAction est une chaîne ansi
+      			MonAction  = MiseEnFormeParamètre(eEnum..Valeur)
+      
+      			SI VersionWindows() = 32 ALORS
+      				// On supprime la clé
+      				RegistreSupprimeClé(sClé + ["\"] + "Shell" + ["\"] + MonAction )
+      				
+      			SINON
+      				
+      				// On supprime la clé d'action
+      				AppelDLL32("kernel32.dll","RegDeleteKeyExA",2147483650,"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CommandStore\\shell\\"+MonAction+"\\command",0x0100,0)
+      				AppelDLL32("kernel32.dll","RegDeleteKeyExA",2147483650,"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CommandStore\\shell\\"+MonAction,0x0100,0)				
+      			FIN
+      		
+      		FIN
+      		
+      	FIN
+      	
+      	RENVOYER Vrai
+      FIN
+      
+      ErreurDéclenche(500,<§@11cd3fdb01dfe8490000§>)
+      
+      RENVOYER Faux
+     type : 458752
+   -
+     name : AssocierExtensions
+     internal_properties : CAAAAAgAAABAJ00jt3EzAphOBWgCq155uqud2is7M0Qny4vdqkaW9Z4CwUSeN6DKIATyEdClWSjR9ZiU49oZQl+dVwu3OtQnA7/0tY5Z82fPeDNT5llHdx2gBXDMkh1drFNROc3udEku0P64QuI/Gu/2f0zVZhCcmQC8spRri9CgEqvkAC4Ld9pPRL/B+jdarW/gS+ntgHrQv7F2Zr4t1ejbjziXRHlQpzYLFUVDO918E9DEWmkECvSGvl67dZlFXmhtlTAoty0XP9iaPV/IMsXjQeQm3ShK3gJGywPyDdDpKPZARU7VbQOmZ6xDnVnDBIzQclW910BWuRtT5w==
+     procedure_id : 1602307716670766126
+     type_code : 15
+     group : 3
+     code : |1-
+      // Résumé : Associe les fichiers rar, zip, 7z, wdz à l'application
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : faux si l'association a échoué, vrai sinon
+      //
+      PROCEDURE AssocierExtensions() : booléen
+      
+      QUAND EXCEPTION DANS
+      	// On associe les extensions d'archive à WDZip
+      	SysDissocieExtension(".rar",sysUtilisateurCourant)
+      	SysAssocieExtension(".rar", ExeInfo(exeNom) +" ""%1""",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".tar.gz",sysUtilisateurCourant)
+      	SysAssocieExtension(".tar.gz", ExeInfo(exeNom) +" ""%1""",sysUtilisateurCourant)	
+      	
+      	SysDissocieExtension(".zip",sysUtilisateurCourant)
+      	SysAssocieExtension(".zip", ExeInfo(exeNom) +" ""%1""",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".7z",sysUtilisateurCourant)
+      	SysAssocieExtension(".7z", ExeInfo(exeNom) +" ""%1""",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".wdz",sysUtilisateurCourant)
+      	SysAssocieExtension(".wdz", ExeInfo(exeNom) +" ""%1""",sysUtilisateurCourant)
+      	
+      	renvoyer vrai
+      	
+      FAIRE
+      	Erreur(ChaîneConstruit(<§@11cd3fdb01dfe8490005§>,RC,ErreurInfo(errComplet)))
+      	renvoyer faux
+      FIN
+     type : 458752
+   -
+     name : DissocierExtension
+     internal_properties : CAAAAAgAAABQvGoUeMPO4Go06MCuR9XDl30rH0PgmJ9ivCO7p7oKlaa4weDlI9dnjIHJD/PWAZBFshzJjaCglYEWckWar64ZX5xuybuVkOzlQSxYrz3lewloSbITXCh+H9m5D6pSbI2WFOnPFBIONRBkNMHmiQ1mE/h48a4mNV4KZnrSzerjxA3MOAmXhs64ubxk6noRWBeQT8w5g8boKrBCs20sDuOTYxSSD6kID7yEP8lb+VDCryz7+9DHI1sG860nkjdfjvYUBGz0KmTFyY+5
+     procedure_id : 1602307720965799240
+     type_code : 15
+     group : 3
+     code : |1+
+      // Résumé : Dissocie les fichiers rar, zip, 7z, wdz de l'application
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : vrai si la dissociation a réussi, faux sinon
+      //
+      PROCEDURE DissocierExtension() : booléen
+      
+      QUAND EXCEPTION DANS
+      	SysDissocieExtension(".rar",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".tar.gz",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".zip",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".7z",sysUtilisateurCourant)
+      	
+      	SysDissocieExtension(".wdz",sysUtilisateurCourant)
+      	
+      	renvoyer vrai
+      FAIRE
+      	Erreur(ChaîneConstruit(<§@11cd3fdb01dfe8490007§>,RC,ErreurInfo(errComplet)))
+      	renvoyer faux
+      FIN
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x11cd3fdb01dfe849
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      fr-FR : Erreur lors de l'ajout du menu pour les fichiers
+     index : 0
+   -
+     text :
+      fr-FR : Erreur lors de la suppression du menu de la base des registres
+     index : 1
+   -
+     text :
+      fr-FR : Erreur lors de l'ajout du menu pour les répertoires
+     index : 2
+   -
+     text :
+      fr-FR : Erreur lors de l'ajout des options des menus de l'application
+     index : 3
+   -
+     text :
+      fr-FR : L'association des archives avec WD Zip a bien été réalisée
+     index : 4
+   -
+     text :
+      fr-FR : "Erreur dans l'association des archives au programme WD Zip %1 Erreur : %2"
+     index : 5
+   -
+     text :
+      fr-FR : Dissociation des archives avec WD Zip réalisée avec succès
+     index : 6
+   -
+     text :
+      fr-FR : "Erreur dans la dissociation des extensions avec WD Zip %1 Erreur : %2"
+     index : 7
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

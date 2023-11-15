@@ -1,0 +1,217 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_GestionArchivage
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x163ca2ca01289750
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  internal_properties : CAAAAAgAAAAykn2bi/kIZbIwhQ1dIMUpHca3vPTTs6bHW02YEg/N/vGRmMQCxyid4qWE4zPtSeX7ProLS+5B5EEwEjdVxQGnT9/Tj2/iAVpaQ7ibz0S5RaFkWbUx1CpsWgoKGqjzO2ktMaOjMEkpcsueHRJUvYRwHSrCoYgrYlIANt31oW9UK51GtwKwX/E/ui0mt8ZfrqHJn3HP7Gzs5B5/9glDrJhYdnoQa4DVEyMqKO+YTmmUGFGL0MTwqkJGh3/wg+yBuSI1
+  type_code : 31
+  p_codes : []
+  procedures :
+   -
+     name : ArchiveAjouteListeFichier
+     procedure_id : 1602346654852485413
+     type_code : 15
+     code : |1+
+      // Résumé : Ajoute à l'archive les fichiers contenus dans le tableau
+      // Paramètres :
+      //	tabFichier (tableau) :Liste des fichiers à archiver
+      //	nModeAjout (entier) :Mode d'ajout des traitements
+      //	Jauge (champ) : Champ jauge que la fonction zip doit utiliser
+      // Valeur de retour :
+      // 	booléen : Vrai si l'ajout a été effectué, faux sinon
+      //
+      Procédure ArchiveAjouteListeFichier(tabFichier est un tableau de chaine,nModeAjout est un entier,Jauge est un champ) : booléen
+      
+      sListeFichier est une chaine
+      
+      // On passe le tableau en chaîne
+      sListeFichier = TableauVersChaîne(tabFichier,RC)
+      
+      SI zipAjouteListeFichier(gMonArchive,sListeFichier,nModeAjout,Jauge)> 0 ALORS
+      	Erreur(ErreurInfo(errComplet))	
+      	renvoyer Faux
+      sinon
+      	renvoyer Vrai
+      fin
+     type : 458752
+   -
+     name : ArchiveCréeArchive
+     procedure_id : 1602346654852551215
+     type_code : 15
+     code : |1-
+      // Résumé : Crée une archive passé en paramètre
+      // Paramètres :
+      //	sFichierArchive (chaîne ANSI) :Chemin de l'archive à créer
+      // Valeur de retour :
+      // 	booléen : Vrai si la création a réussi, faux sinon
+      //
+      fonction ArchiveCréeArchive(sFichierArchive est une chaine) : booléen
+      
+      // Créer la nouvelle archive
+      nRésultatOuverture 	est un entier
+      nRésultatOuverture = zipcree(gMonArchive, sFichierArchive)
+      
+      // Vérification de la création
+      si nRésultatOuverture <> 0 alors
+      	// Problème lors de la création de l'archive
+      	Erreur(<§@163ca2ca012797500001§> + sFichierArchive + "'" + rc + zipMsgErreur(nRésultatOuverture))
+      	renvoyer faux
+      fin
+      
+      // On indique que la création a réussit
+      renvoyer vrai
+     type : 458752
+   -
+     name : ArchiveOuvreArchive
+     procedure_id : 1602346654852616782
+     type_code : 15
+     code : |1-
+      // Résumé : Permet d'ouvrir une archive déjà existante
+      // Paramètres :
+      //	sArchive (chaîne ANSI) :Chemin de l'archive déjà existante
+      // Valeur de retour :
+      // 	booléen : Vrai si l'ouverture a réussi, faux sinon
+      //
+      FONCTION ArchiveOuvreArchive(sArchive est une chaine) : booléen
+      
+      nCR est un entier
+      
+      // ouverture de l'archive
+      nCR = zipouvre(gMonArchive, sArchive, zipEcriture)
+      
+      //  Vérification de l'ouverture
+      si nCR > 0 ALORS
+      	erreur(<§@163ca2ca012797500006§>, zipMsgErreur(nCR))
+      	renvoyer faux
+      FIN
+      
+      renvoyer vrai
+     type : 458752
+   -
+     name : ArchiveExtractionFichiers
+     internal_properties : CAAAAAgAAAAOP6HZtxKYcTYqZ8DnMRM26IEmNTonoSSFi8rkcHEgx04b2RnvgyHkAQ7joSDIPnHs28XgukTBQL8nTG5/5lFEAZfrtAgWz+K/gE6xK8ZPZLO48zbdiCdsrkDF3sO+vw4b4OoxUh8KUb5CKrHV
+     procedure_id : 1602346654852682381
+     type_code : 15
+     code : |1+
+      // Résumé : Extrait des fichiers d'une archive
+      // Paramètres :
+      //	tabFichier (tableau) : Liste des fichiers
+      //	sDestination (chaîne ANSI) :Chemin pour l'extraction des fichiers
+      //	nOption (entier) : option d'extraction
+      //	jauge (champ) : Champ jauge que la fonction zip doit utiliser
+      // Valeur de retour :
+      // 	booléen : vrai si l'extraction a réussi, faux sinon
+      //
+      Procédure ArchiveExtractionFichiers(tabFichier est un tableau de chaine,sDestination est une chaîne, nOption est un entier, jauge est un champ) : booléen
+      
+      sListeFichier est une chaine
+      
+      // Le tableau devient une liste
+      sListeFichier = TableauVersChaîne(tabFichier,RC)
+      
+      // On extrait la liste des fichiers
+      si zipExtraitListeFichier(gMonArchive,sListeFichier,sDestination,nOption,ErreurExtraction,jauge)> 0 ALORS
+      	erreur(ErreurInfo(errComplet))	
+      	renvoyer vrai
+      FIN
+      
+      renvoyer faux
+      
+      
+      	//Callback en cas d'erreur, par défaut on ignore le fichier en erreur
+      	PROCEDURE INTERNE ErreurExtraction (nCode est un entier <utile>, sNomFic est une chaine <utile>)
+      	//Erreur de Mot de passe ?
+      	SI nCode = 21 ALORS
+      		
+      		// Demande le mot de passe
+      		sMotDePasse est une chaîne = ouvre(FEN_MotDePasse)
+      		SELON sMotDePasse
+      			// Annuler
+      			CAS ""
+      				RENVOYER zipAnnule
+      				
+      			// OK
+      			autre cas
+      				zipMotDePasse(gMonArchive,sMotDePasse)	
+      				RENVOYER zipRecommence
+      				
+      		FIN	
+      	fin
+      	Erreur("Fichier en erreur : " + sNomFic + RC + "Erreur :  " + zipMsgErreur(nCode) + RC + RC)
+      	// Un fichier en erreur, on l'ignore
+      	RENVOYER zipIgnore
+      	FIN 
+      
+      
+      
+      
+      
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x163ca2ca01279750
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      fr-FR : "Aucune archive n'est ouverte.\r\nVoulez-vous en créer une maintenant ?"
+     index : 0
+   -
+     text :
+      fr-FR : Problème lors de la création de l'archive '
+     index : 1
+   -
+     text :
+      fr-FR : "Rappel, la compression .tar.gz s'effectue à la fermeture de l'archive."
+     index : 2
+   -
+     text :
+      fr-FR : Total %1 fichiers - %2
+     index : 3
+   -
+     text :
+      fr-FR : Sélectionnés %1 fichiers - %2
+     index : 4
+   -
+     text :
+      fr-FR : "Pour ajouter des fichiers dans l'archive, effectuez un Drag and Drop depuis l'Explorateur"
+     index : 5
+   -
+     text :
+      fr-FR : L'archive n'a pas pu être ouverte
+     index : 6
+   -
+     text :
+      fr-FR : (lecture seule)
+     index : 7
+   -
+     text :
+      fr-FR : Aucun fichier n'est sélectionné.
+     index : 8
+   -
+     text :
+      fr-FR : Voulez-vous extraire la totalité de l'archive ?
+     index : 9
+   -
+     text :
+      fr-FR : Vous n'avez pas spécifié de répertoire d'extraction.
+     index : 10
+   -
+     text :
+      fr-FR : "%1\r\nCe fichier est en lecture seule, caché ou système.\r\nVoulez-vous vraiment le remplacer ?"
+     index : 11
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

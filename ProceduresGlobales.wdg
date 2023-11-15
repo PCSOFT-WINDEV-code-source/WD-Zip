@@ -1,0 +1,139 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : ProceduresGlobales
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x112cb1f600e4066f
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     code : |1-
+      
+     type : 720896
+   -
+     code : |1-
+      
+     type : 720898
+  procedures :
+   -
+     name : nCalculeTaux
+     procedure_id : 4583925640425925033
+     type_code : 15
+     code : |1-
+      Procédure nCalculeTaux(pnTailleDécompressée, pnTailleCompressée) : réel
+      // calcule le taux de compression
+      
+      nTaux est un reel
+      si pnTailleDécompressée=0 ALORS
+      	nTaux = 0
+      sinon
+      	nTaux = (pnTailleDécompressée-pnTailleCompressée)*100/pnTailleDécompressée
+      fin
+      
+      si nTaux<0 ALORS
+      	nTaux = 0
+      FIN
+      
+      renvoyer nTaux
+     type : 458752
+   -
+     name : MiseEnFormeParamètre
+     procedure_id : 1602333748468955283
+     type_code : 15
+     code : |1+
+      // Résumé : Mise en forme des paramètres de la ligne de commande
+      // Paramètres :
+      //	sValeur (chaîne ANSI) :chaine à mettre en forme
+      // Valeur de retour :
+      // 	chaîne ANSI : Valeur de la chaine mise en forme
+      //
+      PROCEDURE MiseEnFormeParamètre(local sValeur est une chaine) : chaine
+      renvoyer Remplace(SansAccent(sValeur),["...",".","'"," ","%","""","1"],"")
+      
+     type : 458752
+   -
+     name : Association_Complete
+     procedure_id : 1603857589966846764
+     type_code : 15
+     code : |1-
+      // Résumé :  Associe les fichiers d'archive à WD Zip et crée le menu contextuelle
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si l'association a réussi, faux sinon
+      //
+      PROCEDURE Association_Complete() : booléen
+      
+      // On associe les extensions au programmes, on crée le menu dans le registre
+      si AssocierExtensions()=faux ALORS
+      	renvoyer faux
+      FIN
+      
+      SI SysMenuFichier() = Faux ALORS
+      	Erreur(ErreurInfo())
+      	renvoyer faux
+      FIN
+      SI SysMenuRepertoire()=Faux ALORS
+      	Erreur(ErreurInfo())
+      	renvoyer faux
+      FIN
+      SI SysMenuOptions()=Faux ALORS
+      	Erreur(ErreurInfo())
+      	renvoyer faux
+      FIN
+      
+      Info(<§@11cd3fdb01dfe8490004§>)
+      
+      renvoyer vrai
+     type : 458752
+   -
+     name : Dissociation_Complete
+     procedure_id : 1603858002283999554
+     type_code : 15
+     code : |1+
+      // Résumé : Dissocie les fichiers d'archive de WD Zip et supprime le menu contextuelle
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	booléen : Vrai si la dissociation a réussi, faux sinon
+      //
+      PROCEDURE  Dissociation_Complete() : booléen
+      
+      si DissocierExtension()=Faux ALORS
+      	renvoyer faux
+      FIN
+      
+      SI SysEnleveMenuFichier()= Faux ALORS
+      	Erreur(ErreurInfo())
+      	renvoyer faux
+      FIN
+      SI SysEnleveMenuRepertoire()=Faux ALORS
+      	Erreur(ErreurInfo())
+      	renvoyer faux
+      FIN
+      SI SysEnleveMenuOptions()=Faux ALORS
+      	Erreur(ErreurInfo())
+      	renvoyer faux
+      FIN
+      
+      Info(<§@11cd3fdb01dfe8490006§>)
+      
+      RENVOYER Vrai
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+resources :
+ string_res :
+  identifier : 0x10f6cbc00aaa1687
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

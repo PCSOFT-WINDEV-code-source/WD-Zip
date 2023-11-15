@@ -1,0 +1,348 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_LanceAppli
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x1e5ba9db001bc393
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAABZcJgVnSM0kRvQocs0GAZd3nhKgJthMA2VguTaZpn/CciFzZWsa0Gf6nEaa3UEaYRrH+lnXOWa72CZvcYPt3fkvREFrdzLhQuBugZrZYMqIduAEbtlAwUsjUYTLQuTQpS59UJAsvNvwsJkrsVgtSt37h2neUM+z6dKwwnM7dvWVQ==
+     code : |1+
+      // Structure utilisée par l'API ShellExecuteEx
+      STSHELLEXECUTEINFO est une structure
+      	nCbSize est un entier sur 4 octets
+      	nFMask  est un entier sur 4 octets
+      	nHwnd est un entier systeme
+      	nLpVerb est un entier système
+      	nLpFile est un entier système
+      	nLpParameters est un entier système
+      	nLpDirectory  est un entier système
+      	nShow est un entier sur 4 octets
+      	nHInstApp est un entier systeme
+      	nLpIDList est un entier systeme
+      	nLpClass est un entier système
+      	nHkeyClass  est un entier système
+      	nDwHotKey est un entier sur 4 octets
+      	nHIcon_hMonitor est un entier système
+      	nHProcess est un entier système
+      fin
+      
+      constant
+      	// Constantes de paramétrage de la structure STSHELLEXECUTEINFO
+      	SEE_MASK_DEFAULT = (0x00000000)			// Utiliser les valeurs par défaut
+      	SEE_MASK_CLASSNAME = (0x00000001)			// Utiliser la valeur du membre nLpClass
+      	SEE_MASK_CLASSKEY = (0x00000003)			// Utiliser la valeur du membre nHkeyClass (prioritaire sur SEE_MASK_CLASSNAME)
+      	SEE_MASK_IDLIST = (0x00000004)				// Utiliser la valeur du membre nLpIDList (doit pointer sur une structure de type ITEMLIST)
+      	SEE_MASK_HOTKEY = (0x00000020)			// Utiliser le raccourci clavier du membre nDwHotKey
+      	SEE_MASK_NOCLOSEPROCESS = (0x00000040)	// Le membre nHProcess recevra le handle du processus lancé, celui ci devra être fermé par un appel à CloseHandle
+      	SEE_MASK_NOASYNC = (0x00000100)			// Attend que l'exécution soit commencée pour rendre la main
+      	SEE_MASK_DOENVSUBST = (0x00000200)		// Etendre les variables d'environnement de nLpDirectory ou nLpFile
+      	SEE_MASK_FLAG_NO_UI = (0x00000400)			// Ne pas afficher de message en cas d'erreur
+      	SEE_MASK_NO_CONSOLE = (0x00008000)		// Le processus créé héritera de la console de son appelant
+      	SEE_MASK_HMONITOR = (0x00200000)			// Permet d'indiquer quel écran utiliser sur un système multi-écrans (dans le membre nHIcon_hMonitor)
+      	SEE_MASK_FLAG_LOG_USAGE = (0x04000000)	// Compte le nombre de lancement de l'application (à partir de XP, les applications les plus fréquemment lancées sont mises en avant dans le menu démarrer) 
+      	
+      	// Constantes de mode d'affichage des fenêtres
+      	SW_HIDE = 0					// Cache la fenêtre
+      	SW_SHOWMAXIMIZED = 3			// Affiche la fenêtre maximisée
+      	SW_SHOWMINIMIZED = 2			// Affiche la fenêtre minimisée
+      	SW_SHOWNOACTIVATE = 4		// N'active pas la fenêtre
+      	SW_SHOWNORMAL  = 1			// Affiche la fenêtre
+      	
+      fin
+     type : 720896
+  procedures :
+   -
+     name : bUACEstDisponible
+     internal_properties : CAAAAAgAAACM9MGNrnO1j0LN0C4PfhNQvxqVkyFBBAdAML5OFRfcCXrCzlb3jnbCjtx/NIjn6avUTS/qZ+lrrvM2YA7SPlDqA4dUKWLR/0NIt6eD5RdJMWjTdBGNIK06xOG8KuUWiCU3/pV3fK9bBAbJRM8+8H8qNSMnMpzl4IdOQyJwD+etoOMdXT9MaYr3k/BC4idLKoam0/6vigb8MtMyiFaRNLZSYJY2qnpn
+     procedure_id : 2187528892277593577
+     type_code : 15
+     code : |1-
+      // Résumé : Détermine si l'UAC existe sur le système d'exploitation en cours
+      // Valeur de retour :
+      // 	booléen : Vrai si l'UAC existe, faux sinon
+      //
+      PROCEDURE bUACEstDisponible()
+      
+      // L'UAC n'existe que sous Windows, sur les plateformes NT
+      si SysVersionWindows(sysVersionPlateForme)<>"NT" alors renvoyer faux
+      
+      // L'UAC n'existe qu'à partir de Windows Vista
+      si SysVersionWindows(sysVersionNuméro)<6 ALORS renvoyer faux
+      
+      // Le système supporte l'UAC
+      renvoyer vrai
+     type : 458752
+   -
+     name : bUACEstActif
+     procedure_id : 2187541111459643294
+     type_code : 15
+     code : |1+
+      // Résumé : Détermine si le mécanisme de l'UAC est actif
+      // Valeur de retour :
+      // 	booléen : Vrai si l'UAC est activé, Faux sinon
+      //
+      PROCEDURE bUACEstActif()
+      
+      // Le paramétrage de l'UAC est conservé dans une clé de registre
+      bUACActive est un booleen = val(registrelit("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System","EnableLUA"))
+      
+      renvoyer bUACActive
+     type : 458752
+   -
+     name : bPrivilègesElevés
+     internal_properties : CAAAAAgAAAAH4KnK+nr1ZSrB+1vsdgE01UI0D2UywXpNCBw/Uop+ECovmPI62BrhsqkeAQgKLJ7T+97Vh59g4OMR0kaVPgxI3fjMC4TNBP09PcCnVGaXcYZTNIqh8e7hoUDn7uR0dZsx5x9IWJYG5NGcmfCR4lYF0Y3OK++kkDzinKGt0JgIijsIUc8mlM7Pyol4PrthZzXCii8QbRWoAz0zHSn5GugvJHh1RuadCqOV8O3o7NICdcpOoU9H6hPl571caauquzcUlWq3pkTZWh5frkSSRZtv087B5+imVI/w/S43pr7L3lJJ1NiQHkSmhzQTbrIcLcLJi1sx3Vqb
+     procedure_id : 2187548266875448346
+     type_code : 15
+     code : |1-
+      // Résumé : Détermine si l'application a été créée avec des privilèges élevés ou non
+      // Valeur de retour :
+      // 	booléen : Vrai si l'application est en privilèges élevés, faux sinon
+      //	En cas d'erreur, ErreurDétecté renvoie Vrai et ErreurInfo donne le détail de l'erreur
+      //
+      PROCEDURE bPrivilègesElevés()
+      
+      TOKEN_READ est un entier sur 4 octets = 0x0008+0x00020000
+      TokenElevation est un entier sur 4 octets = 20
+      TokenElevationType est un entier sur 4 octets = 18
+      TokenElevationTypeDefault est un entier sur 4 octets = 1
+      TokenElevationTypeFull est un entier sur 4 octets = 2
+      
+      
+      hProcess est un entier systeme
+      hToken est un entier système
+      tTokenElevation est un entier sur 4 octets
+      eElevationType est un entier sur 4 octets
+      dwTokenLength  est un entier sur 4 octets
+      
+      // Lit le jeton de sécurité (token) du processus courant
+      hProcess = API("kernel32","GetCurrentProcess")
+      si api("advapi32","OpenProcessToken",hProcess,TOKEN_READ,&hToken)=faux alors
+      	ErreurDéclenche(1,"Impossible de lire les informations de sécurité du process.")
+      	renvoyer faux
+      fin
+      
+      // Demande le paramètre d'élévation contenu dans le token
+      si api("advapi32","GetTokenInformation",hToken,TokenElevation,&tTokenElevation,dimension(tTokenElevation),&dwTokenLength)=faux alors
+      	ErreurDéclenche(2,"Impossible de lire le paramètre d'élévation de privilèges du process.")
+      	RENVOYER Faux
+      FIN
+      
+      si tTokenElevation<>0 alors
+      	si api("advapi32","GetTokenInformation",hToken,TokenElevationType,&eElevationType,dimension(eElevationType),&dwTokenLength)=faux alors
+      		ErreurDéclenche(3,"Impossible de lire la valeur du paramètre d'élévation de privilèges du process.")
+      		renvoyer faux
+      	sinon
+      		si eElevationType _dans_ ( TokenElevationTypeDefault, TokenElevationTypeFull) alors
+      			renvoyer vrai
+      		sinon
+      			renvoyer faux
+      		FIN
+      	fin
+      fin
+      
+      renvoyer faux
+     type : 458752
+   -
+     name : bEstAdministrateur
+     internal_properties : CAAAAAgAAAAOqWrMduL2MeiYNyGGBHu+uUb+ClbRHcYanPQBkeoKG0wJi7oplDBJQmo22E746a7q0uaDdmg1k5JO3Qb8rtThGRooDKgo3y4AqJIDKxAfREVKuoy8sT5dO2iTcy6zA6qqWXoqA8RoIxfCfZ5HxxpH4EZcDfust8y3PKvnDBzMARHTiwmqBUwp1/R2ftO3QqbUmKNatd4=
+     procedure_id : 2187548713552347300
+     type_code : 15
+     code : |1+
+      // Résumé : Détermine si l'utilisateur courant est un membre du groupe Administrateur
+      // Valeur de retour :
+      // 	booléen : Vrai si l'utilisateur fait partie du groupe local "Administrateurs", Faux sinon
+      //
+      PROCEDURE bEstAdministrateur()
+      
+      bAdmin est un booleen = api("shell32","IsUserAnAdmin")
+      
+      renvoyer bAdmin
+     type : 458752
+   -
+     name : LanceAppliAvecElévation
+     internal_properties : CAAAAAgAAAAIYxRySCRPgZYG2+XKuos+AzDEPLKvGc7ULiBFpQCSH5IHocxpdqQF3OR2SFbCFeoI8JQlFmJh48RwIf4cCKxRg/SKgmR+czLK4h7mUPlq0fLv1fGp8ock4M0IwkeAMluXfh3v8DXZEgQ3EnkA5CWMGW97foSZXIN8MVD6mW0z4kqUxj5LepkE6I3fPZDw6YgmskU46+A=
+     procedure_id : 2187555250492980091
+     type_code : 15
+     code : |1+
+      // Résumé : Lance une application en réalisant une élévation de privilèges
+      // Paramètres :
+      //	sLigneCommande (chaîne) : Ligne de commande a exécuter
+      //	nMode (entier - valeur par défaut=1) : Mode de lancement du programme
+      //	nAttenteFin (entier - valeur par défaut=1) :indique s'il faut attendre la fin du processus pour rendre la main
+      //	sRépertoireTravail (chaîne - valeur par défaut="") : répertoire de travail (chaine vide = répertoire en cours)
+      // Valeur de retour :
+      // 	booléen : Vrai si l'application a été lancé correctement, faux en cas d'erreur
+      //
+      PROCEDURE LanceAppliAvecElévation( local sLigneCommande est une chaine , local nMode est un entier = exeActif, local nAttenteFin est un entier = exeBloquant, local sRépertoireTravail est une chaine = "" )
+      
+      RENVOYER _LanceAppliUAC(sLigneCommande,nAttenteFin,nMode,sRépertoireTravail,"runas")
+     type : 458752
+   -
+     name : LanceAppliUAC
+     procedure_id : 2187560103806499164
+     type_code : 15
+     code : |1-
+      // Résumé : Lance une application en réalisant une élévation de privilèges
+      // Paramètres :
+      //	sLigneCommande (chaîne) : Ligne de commande a exécuter
+      //	nMode (entier - valeur par défaut=1) : Mode de lancement du programme
+      //	nAttenteFin (entier - valeur par défaut=1) :indique s'il faut attendre la fin du processus pour rendre la main
+      //	sRepertoireTravail (chaîne - valeur par défaut="") : répertoire de travail (chaine vide = répertoire en cours)
+      // Valeur de retour :
+      // 	booléen : Vrai si l'application a été lancé correctement, faux en cas d'erreur
+      //
+      PROCEDURE LanceAppliUAC( local sLigneCommande est une chaine , local nMode est un entier = exeActif, local nAttenteFin est un entier = exeBloquant, local sRepertoireTravail est une chaine = "" )
+      
+      renvoyer _LanceAppliUAC(sLigneCommande,nAttenteFin,nMode,sRepertoireTravail,"open")
+     type : 458752
+   -
+     name : LanceAppliPrivilègesRestreints
+     internal_properties : CAAAAAgAAAAWWFtpTlGMIqi8DlsrlG3QRu1IVvQcMpXYhEXGOxpUDaX/Vrm3YN+YFqtlyjPtXedffENhP97Y8vI14rWFdWem9BGpGeDxtymgoMh0jPwCRSj3W71VsVQHZcJ48PYwg1Gg1fTY6CvbtSvsoFCNDwcQkzMK+NA7OZ8DMfGDZCOhygyPRgT/oZCTj4zX5M0aMhm+upwr0deA7JCLG9QxDSR7um13o0pDHQyxtKqBoDcgsxgX1dcKcC8xtJycdQS2si4T4qccqv8lgZqh4Sj1L7D0VklB28ROQa+nL+FOmBtm+2KnqFhiDRjbTecpCzRygRZd/LJKpNseX2KFGaDUXBJ4YhslMufRaSUJjIe7f99kY/0Qm//4Ubl97A2Awi298UhtGbiHo8bZSSzOk+mHg+DUbNOAiqi3I4K6Pt0StZ6/7jjgc/XagwduLArdX2FL8fYbKd2+supt
+     procedure_id : 2187563144643396950
+     type_code : 15
+     code : |1+
+      // Résumé : Lance une application en revenant aux privilèges restreints
+      // Pour revenir à des privilèges restreints, on fait lancer l'application par le planificateur de tâches.
+      // A partir de Windows Vista, les tâches planifiées possèdent en effet une option supplémentaire pour indiquer
+      // si l'application doit être lancée en privilèges élevés ou restreints.
+      // Cette option n'est pas disponible dans la structure TâchePlanifiée du WLangage.
+      // Pour résoudre ce problème, la tâche planifiée est créée en utilisant l'utilitaire schtasks.exe (livré avec Windows)
+      // qui sert à piloter le planificateur de tâches.
+      // Paramètres :
+      //	sNomAppli (chaîne) : Ligne de commande a exécuter
+      // Valeur de retour :
+      // 	Type indéterminé : Vrai si l'application a été lancé correctement, faux en cas d'erreur
+      //
+      PROCEDURE LanceAppliPrivilègesRestreints( sNomAppli est une chaine )
+      
+      sContenuXML est une chaine = ChaîneConstruit([
+      <?xml version="1.0" ?>
+      <Task xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+      <RegistrationInfo>
+      <Date>2005-10-11T13:21:17-08:00</Date>
+      <Author></Author>
+      <Version>1.0.0</Version>
+      <Description></Description>
+      </RegistrationInfo>
+      <Triggers>
+      <TimeTrigger>
+      <StartBoundary>2005-10-11T13:21:17-08:00</StartBoundary>
+      <EndBoundary>2006-01-01T00:00:00-08:00</EndBoundary>
+      <Enabled>true</Enabled>
+      <ExecutionTimeLimit>PT5M</ExecutionTimeLimit>
+      </TimeTrigger>
+      </Triggers>
+      <Principals>
+      <Principal>
+      <LogonType>InteractiveToken</LogonType>
+      </Principal>
+      </Principals>
+      <Settings>
+      <Enabled>true</Enabled>
+      <AllowStartOnDemand>true</AllowStartOnDemand>
+      <AllowHardTerminate>true</AllowHardTerminate>
+      </Settings>
+      <Actions>
+      <Exec>
+      <Command>%1</Command>
+      </Exec>
+      </Actions>
+      </Task>
+      ],sNomAppli)
+      
+      sNomTache est une chaine = "LanceAppli"+donneguid()
+      
+      // Création de la tache
+      sFichierTemp est une chaine = fFichierTemp("XML")
+      fSauveTexte(sFichierTemp,sContenuXML)
+      sLigneCommande est une chaine = "schtasks.exe /create /XML """+sFichierTemp+""" /tn "+sNomTache
+      si LanceAppli(sLigneCommande,exeIconise,exeBloquant)=Faux ALORS
+      	renvoyer faux
+      FIN
+      
+      // Supprime le fichier de description
+      fSupprime(sFichierTemp)
+      
+      // Exécution forcée
+      sLigneCommande = "schtasks.exe /run /tn "+sNomTache
+      si LanceAppli(sLigneCommande,exeIconise,exeBloquant)=faux ALORS
+      	renvoyer faux
+      FIN
+      
+      // Effacement de la tâche
+      sLigneCommande = "schtasks.exe /delete /f /tn "+sNomTache
+      renvoyer LanceAppli(sLigneCommande,exeIconise,exeBloquant)
+     type : 458752
+   -
+     name : _LanceAppliUAC
+     internal_properties : CAAAAAgAAAAv8StPn8IM7re3uqZ0y5uL/zvXihkmIjAcELkZzGcoWvg3eryRW3EKfWGwIkrsTW7QDBSE+bmKk7c5Pm3RmRvJCitk00d4MfHbr57Q+fJd33ghU/hnuPRSh+aB/ndcCYdE0EiWrNdexmdu82dOrBRG7ofEszj7k/kHUB3Uy12acjTcOUqAZitSnX+MBaM3PqdXL+rG9tCpuFAkQSEsTyd0iN12jQMXUqjRucz374VoiepOm3zI
+     procedure_id : 2187807708668342841
+     type_code : 15
+     code : |1-
+      // Résumé : Fonction interne utilisée par LanceAppliUAC et LanceAppliAvecElevation
+      //
+      PROCEDURE PRIVEE _LanceAppliUAC(local sLigneCommande est une chaine, local nAttenteFin est un entier, local nMode est un entier, local sRepertoireTravail est une chaine, local sVerbe est une chaine)
+      
+      // Initialise la structure de l'API ShellExecuteEx
+      stLanceAppli est un STSHELLEXECUTEINFO
+      stLanceAppli.nCbSize = Dimension(stLanceAppli)
+      
+      stLanceAppli.nLpFile = &sLigneCommande
+      stLanceAppli.nLpVerb = &sVerbe
+      stLanceAppli.nFMask = SEE_MASK_DEFAULT
+      
+      // Traitement du paramètre de lancement bloquant
+      SI nAttenteFin=exeBloquant ALORS
+      	stLanceAppli.nFMask = SEE_MASK_NOCLOSEPROCESS
+      FIN
+      
+      // Traitement du mode de lancement
+      SELON nMode
+      	CAS exeActif
+      		stLanceAppli.nShow = SW_SHOWNORMAL
+      	CAS exeIconise
+      		stLanceAppli.nShow = SW_SHOWMINIMIZED
+      	CAS exeInactif
+      		stLanceAppli.nShow = SW_SHOWNORMAL + SW_SHOWNOACTIVATE
+      	CAS exeMaximise
+      		stLanceAppli.nShow = SW_SHOWMAXIMIZED
+      FIN
+      SI sRepertoireTravail<>"" ALORS
+      	stLanceAppli.nLpDirectory = &sRepertoireTravail
+      FIN
+      
+      // Appel de l'API
+      bRet est un booleen = api("shell32","ShellExecuteExA",&stLanceAppli)
+      SI bRet _ET_ nMode=exeActif ALORS
+      	// S'il faut attendre la fin de l'exe
+      	SI stLanceAppli.nHProcess<>0 ALORS
+      		nExitCode est un entier sur 4 octets
+      		TANTQUE API("kernel32","GetExitCodeProcess",stLanceAppli.nHProcess,&nExitCode)
+      			SI nExitCode<>259 ALORS SORTIR
+      			Multitâche(-100)
+      		FIN
+      	FIN
+      FIN
+      
+      renvoyer bRet
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x10f6cbc00a941639
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ
